@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos — ModaShop</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <a href="../index.html" class="navbar-brand">Moda<span>Shop</span></a>
+        <ul class="navbar-nav">
+            <li><a href="products.html">Produtos</a></li>
+            <li id="nav-auth"><a href="login.html">Entrar</a></li>
+            <li class="cart-icon">
+                <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="page-header">
+        <h1>Produtos</h1>
+    </div>
+
+    <div class="filters">
+        <form id="filter-form">
+            <input type="text"   id="filter-name" placeholder="Buscar produto...">
+            <select id="filter-category">
+                <option value="">Todas as categorias</option>
+            </select>
+            <input type="number" id="filter-min" placeholder="Preço mín." min="0" step="0.01">
+            <input type="number" id="filter-max" placeholder="Preço máx." min="0" step="0.01">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <button type="reset"  class="btn btn-secondary" id="clear-filters">Limpar</button>
+        </form>
+    </div>
+
+    <div id="products-grid" class="products-grid">
+        <p class="empty-state">Carregando produtos...</p>
+    </div>
+
+    <div id="pagination"></div>
+</main>
+
+<script type="module" src="../js/products.js"></script>
+<script type="module">
+    import { isAuthenticated, logout, getCurrentUser } from '../js/auth.js';
+
+    const navAuth = document.querySelector('#nav-auth');
+    if (isAuthenticated()) {
+        const user = getCurrentUser();
+        navAuth.innerHTML = `
+            <a href="orders.html">Meus pedidos</a>
+            <a href="#" id="logout-btn">Sair</a>
+        `;
+        document.querySelector('#logout-btn').addEventListener('click', e => {
+            e.preventDefault(); logout();
+        });
+    }
+
+    document.querySelector('#clear-filters').addEventListener('click', () => {
+        setTimeout(() => document.querySelector('#filter-form').dispatchEvent(new Event('submit')), 0);
+    });
+</script>
+</body>
+</html>

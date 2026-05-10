@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho — ModaShop</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .cart-layout { display: grid; grid-template-columns: 1fr 320px; gap: 1.5rem; padding: 1.5rem 0; }
+        @media (max-width: 768px) { .cart-layout { grid-template-columns: 1fr; } }
+        .qty-input { width: 60px; text-align: center; padding: .3rem; border: 1px solid #e0e0e0; border-radius: 6px; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <a href="../index.html" class="navbar-brand">Moda<span>Shop</span></a>
+        <ul class="navbar-nav">
+            <li><a href="products.html">Produtos</a></li>
+            <li class="cart-icon">
+                <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="page-header"><h1>Carrinho</h1></div>
+
+    <div class="cart-layout">
+        <div id="cart-items">
+            <p class="empty-state">Seu carrinho está vazio.</p>
+        </div>
+
+        <div class="cart-summary">
+            <h3 style="margin-bottom:1rem">Resumo</h3>
+            <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem">
+                <span>Total:</span>
+                <strong id="cart-total" style="color:#e94560;font-size:1.2rem">R$ 0,00</strong>
+            </div>
+            <button id="checkout-btn" class="btn btn-primary" style="width:100%">Finalizar Compra</button>
+            <div id="checkout-msg" style="margin-top:.75rem;font-size:.85rem;text-align:center"></div>
+        </div>
+    </div>
+</main>
+
+<script type="module">
+    import { getCart, removeFromCart, updateQuantity, getCartTotal, checkout, updateCartCount } from '../js/cart.js';
+    import { isAuthenticated } from '../js/auth.js';
+
+    function render() {
+        const cart = getCart();
+        updateCartCount();
+
+        document.querySelector('#cart-total').textContent =
+            'R$ ' + getCartTotal().toFixed(2).replace('.', ',');
+
+        const container = document.querySelector('#cart-items');
+
+        if (cart.length === 0) {
+            container.innerHTML = '<p class="empty-state">Seu carrinho está vazio.</p>';
+            return;
+        }
+
+        container.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <img src="https://via.placeholder.com/80x80?text=${encodeURIComponent(item.name)}"
+                     alt="${item.name}">
+                <div class="cart-item-info">
+                    <h4>${item.name}</h4>
+                    <p class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
+                </div>
+                <input type="number" class="qty-input" value="${item.quantity}" min="1"
+                       data-id="${item.id}" style="margin:0 .5rem">
+                <button class="btn btn-secondary remove-btn" data-id="${item.id}"
+                        style="padding:.4rem .8rem;font-size:.8rem">✕</button>
+            </div>
+        `).join('');
+
+        container.querySelectorAll('.remove-btn').forEach(btn =>
+            btn.addEventListener('click', () => { removeFromCart(btn.dataset.id); render(); }));
+
+        container.querySelectorAll('.qty-input').forEach(input =>
+            input.addEventListener('change', () => { updateQuantity(input.dataset.id, +input.value); render(); }));
+    }
+
+    document.querySelector('#checkout-btn').addEventListener('click', async () => {
+        const msg = document.querySelector('#checkout-msg');
+        if (!isAuthenticated()) {
+            msg.innerHTML = '<a href="login.html">Faça login</a> para finalizar o pedido';
+            return;
+        }
+        try {
+            document.querySelector('#checkout-btn').disabled = true;
+            const order = await checkout();
+            msg.style.color = 'green';
+            msg.textContent = `Pedido #${order.id.slice(0, 8)} criado com sucesso!`;
+            render();
+            setTimeout(() => window.location.href = 'orders.html', 2000);
+        } catch (err) {
+            msg.style.color = 'red';
+            msg.textContent = err.message;
+            document.querySelector('#checkout-btn').disabled = false;
+        }
+    });
+
+    render();
+</script>
+</body>
+</html>

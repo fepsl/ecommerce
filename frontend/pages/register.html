@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro — ModaShop</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <a href="../index.html" class="navbar-brand">Moda<span>Shop</span></a>
+    </div>
+</nav>
+
+<main>
+    <div class="form-card">
+        <h1>Criar conta</h1>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="name">Nome completo</label>
+                <input type="text" id="name" placeholder="Seu Nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Mínimo 6 caracteres" minlength="6" required>
+            </div>
+            <div id="error-msg" class="form-error" style="display:none"></div>
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:.5rem" id="submit-btn">
+                Criar conta
+            </button>
+        </form>
+        <p style="text-align:center;margin-top:1rem;font-size:.9rem">
+            Já tem conta? <a href="login.html">Entrar</a>
+        </p>
+    </div>
+</main>
+
+<script type="module">
+    import { register, isAuthenticated } from '../js/auth.js';
+
+    if (isAuthenticated()) window.location.href = '../index.html';
+
+    document.querySelector('#register-form').addEventListener('submit', async e => {
+        e.preventDefault();
+        const btn = document.querySelector('#submit-btn');
+        const errEl = document.querySelector('#error-msg');
+        errEl.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Criando conta...';
+
+        try {
+            await register(
+                document.querySelector('#name').value,
+                document.querySelector('#email').value,
+                document.querySelector('#password').value
+            );
+            window.location.href = '../pages/products.html';
+        } catch (err) {
+            errEl.textContent = err.message;
+            errEl.style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Criar conta';
+        }
+    });
+</script>
+</body>
+</html>

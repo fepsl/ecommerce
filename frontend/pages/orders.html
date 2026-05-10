@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pedidos — ModaShop</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <a href="../index.html" class="navbar-brand">Moda<span>Shop</span></a>
+        <ul class="navbar-nav">
+            <li><a href="products.html">Produtos</a></li>
+            <li><a href="#" id="logout-btn">Sair</a></li>
+            <li class="cart-icon">
+                <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="page-header"><h1>Meus Pedidos</h1></div>
+    <div id="orders-list"><p class="empty-state">Carregando pedidos...</p></div>
+</main>
+
+<script type="module">
+    import api from '../js/api.js';
+    import { requireAuth, logout } from '../js/auth.js';
+    import { updateCartCount } from '../js/cart.js';
+
+    requireAuth();
+    updateCartCount();
+
+    document.querySelector('#logout-btn').addEventListener('click', e => { e.preventDefault(); logout(); });
+
+    const statusBadge = s => {
+        const map = {
+            PENDING:   ['badge-pending',   'Aguardando'],
+            PAID:      ['badge-paid',      'Pago'],
+            SHIPPED:   ['badge-shipped',   'Enviado'],
+            DELIVERED: ['badge-delivered', 'Entregue'],
+            CANCELLED: ['badge-cancelled', 'Cancelado'],
+        };
+        const [cls, label] = map[s] || ['', s];
+        return `<span class="badge ${cls}">${label}</span>`;
+    };
+
+    try {
+        const orders = await api.get('/orders/me');
+        const container = document.querySelector('#orders-list');
+
+        if (orders.length === 0) {
+            container.innerHTML = '<p class="empty-state">Você ainda não fez nenhum pedido.</p>';
+            return;
+        }
+
+        container.innerHTML = orders.map(o => `
+            <div class="order-card">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem">
+                    <div>
+                        <strong>Pedido #${o.id.slice(0, 8)}</strong>
+                        <span style="color:#888;font-size:.85rem;margin-left:.75rem">
+                            ${new Date(o.createdAt).toLocaleDateString('pt-BR')}
+                        </span>
+                    </div>
+                    ${statusBadge(o.status)}
+                </div>
+                <div style="margin-bottom:.75rem">
+                    ${o.items.map(i => `
+                        <div style="display:flex;justify-content:space-between;font-size:.9rem;padding:.2rem 0">
+                            <span>${i.productName} × ${i.quantity}</span>
+                            <span>R$ ${i.subtotal.toFixed(2).replace('.', ',')}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                <div style="text-align:right;font-weight:700;color:#e94560">
+                    Total: R$ ${o.totalAmount.toFixed(2).replace('.', ',')}
+                </div>
+            </div>
+        `).join('');
+    } catch (err) {
+        document.querySelector('#orders-list').innerHTML =
+            `<p class="empty-state" style="color:red">${err.message}</p>`;
+    }
+</script>
+</body>
+</html>

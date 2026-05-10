@@ -1,0 +1,81 @@
+version: '3.9'
+
+services:
+
+  # ─── Banco de dados ───────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: ecommerce_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ecommerce_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── Adminer (interface web para o banco) ─────────────────
+  adminer:
+    image: adminer:latest
+    container_name: ecommerce_adminer
+    ports:
+      - "8081:8080"
+    networks:
+      - ecommerce_network
+    depends_on:
+      - postgres
+
+  # ─── Backend (Spring Boot) ────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ecommerce_backend
+    env_file:
+      - .env
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+    ports:
+      - "8080:8080"
+    networks:
+      - ecommerce_network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ─── Frontend (Nginx) ─────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ecommerce_frontend
+    ports:
+      - "3000:80"
+    networks:
+      - ecommerce_network
+    depends_on:
+      - backend
+
+# ─── Volumes ──────────────────────────────────────────────
+volumes:
+  postgres_data:
+    name: ecommerce_postgres_data
+
+# ─── Redes ────────────────────────────────────────────────
+networks:
+  ecommerce_network:
+    name: ecommerce_network
+    driver: bridge
