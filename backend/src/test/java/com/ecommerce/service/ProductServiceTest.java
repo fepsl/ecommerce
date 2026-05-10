@@ -15,11 +15,18 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -109,5 +116,56 @@ class ProductServiceTest {
 
         assertThat(activeProduct.isActive()).isFalse();
         verify(productRepository).save(activeProduct);
+    }
+
+    @Test
+    @DisplayName("findAll sem filtros delega ao repositório com todos os parâmetros nulos")
+    void findAll_noFilters_delegatesToRepository() {
+        PageRequest pageable = PageRequest.of(0, 12);
+        Page<Product> page = new PageImpl<>(List.of(activeProduct));
+
+        when(productRepository.findWithFilters(isNull(), isNull(), isNull(), isNull(), eq(pageable)))
+                .thenReturn(page);
+
+        Page<ProductResponse> result = productService.findAll(null, null, null, null, pageable);
+
+        assertThat(result.getContent()).hasSize(1);
+        assertThat(result.getContent().get(0).getName()).isEqualTo("Camiseta Teste");
+        verify(productRepository).findWithFilters(null, null, null, null, pageable);
+    }
+
+    @Test
+    @DisplayName("findAll com categoria repassa UUID da categoria ao repositório")
+    void findAll_withCategoryFilter_passesCategoryIdToRepository() {
+        UUID categoryId = UUID.randomUUID();
+        PageRequest pageable = PageRequest.of(0, 12);
+        Page<Product> page = new PageImpl<>(List.of(activeProduct));
+
+        when(productRepository.findWithFilters(isNull(), eq(categoryId), isNull(), isNull(), eq(pageable)))
+                .thenReturn(page);
+
+        Page<ProductResponse> result = productService.findAll(null, categoryId, null, null, pageable);
+
+        assertThat(result.getContent()).hasSize(1);
+        verify(productRepository).findWithFilters(null, categoryId, null, null, pageable);
+    }
+
+    @Test
+    @DisplayName("create com categoria inexistente lança ResourceNotFoundException")
+    void create_nonExistentCategory_throwsException() {
+        UUID categoryId = UUID.randomUUID();
+        ProductRequest request = new ProductRequest();
+        request.setName("Produto");
+        request.setPrice(new BigDecimal("59.90"));
+        request.setStock(3);
+        request.setCategoryId(categoryId);
+
+        when(categoryRepository.findById(categoryId)).thenReturn(Optional.empty());
+
+        assertThatThrownBy(() -> productService.create(request))
+                .isInstanceOf(ResourceNotFoundException.class)
+                .hasMessageContaining(categoryId.toString());
+
+        verify(productRepository, never()).save(any());
     }
 }

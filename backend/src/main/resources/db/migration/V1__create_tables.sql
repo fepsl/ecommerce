@@ -52,7 +52,7 @@ CREATE TABLE addresses (
     street  VARCHAR(255) NOT NULL,
     number  VARCHAR(20)  NOT NULL,
     city    VARCHAR(100) NOT NULL,
-    state   CHAR(2)      NOT NULL,
+    state   VARCHAR(2)   NOT NULL,
     zip     VARCHAR(9)   NOT NULL
 );
 

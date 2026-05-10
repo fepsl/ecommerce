@@ -7,12 +7,12 @@ INSERT INTO users (id, name, email, password, role) VALUES
     ('00000000-0000-0000-0000-000000000001',
      'Admin',
      'admin@ecommerce.com',
-     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy',
+     '$2a$10$Ojjw5GRwY9PPZnnrr2kmS.uTyu.rvy6fW3fk4u8Rg4XaHqd/heFtW',
      'ADMIN'),
     ('00000000-0000-0000-0000-000000000002',
      'Cliente Teste',
      'cliente@ecommerce.com',
-     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy',
+     '$2a$10$Ojjw5GRwY9PPZnnrr2kmS.uTyu.rvy6fW3fk4u8Rg4XaHqd/heFtW',
      'USER');
 
 INSERT INTO categories (id, name, description) VALUES
