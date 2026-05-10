@@ -81,4 +81,6 @@ Quando precisa carregar relacionamentos, usa `@EntityGraph` no repositório — 
 
 - [[banco-de-dados]] — entidades e relacionamentos
 - [[autenticacao-jwt]] — detalhe do fluxo de segurança
+- [[spring-boot]] — configuração, profiles, Swagger
+- [[testes]] — como cada camada é testada
 - [[decisoes-tecnicas]] — justificativas para cada escolha

@@ -62,4 +62,7 @@ Conseguir **estágio em Engenharia de Software** com um projeto que demonstre co
 - [[arquitetura]] — estrutura de pacotes e princípios
 - [[banco-de-dados]] — schema completo
 - [[api-endpoints]] — todos os endpoints documentados
+- [[frontend]] — módulos JS e páginas
+- [[docker]] — como rodar o projeto localmente
+- [[testes]] — estratégia de testes
 - [[roadmap]] — o que vem a seguir

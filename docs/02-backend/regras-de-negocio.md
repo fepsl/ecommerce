@@ -67,3 +67,4 @@ Transição normal é sempre para frente.
 
 - [[api-endpoints]] — onde cada regra se manifesta na API
 - [[banco-de-dados]] — constraints no nível do banco
+- [[testes]] — como as regras de negócio são cobertas por testes

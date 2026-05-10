@@ -55,5 +55,6 @@
 
 ## Relacionado
 
-- [[sprints/sprint-01]] — primeira sprint detalhada
+- [[sprint-01]] — primeira sprint detalhada
+- [[sprint-02]] — próxima sprint (testes + qualidade)
 - [[decisoes-tecnicas]] — por que algumas features foram deixadas para depois

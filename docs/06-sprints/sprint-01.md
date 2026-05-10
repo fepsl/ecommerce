@@ -61,4 +61,4 @@ Ter toda a estrutura do projeto criada, com a API funcionando localmente via Doc
 
 ## Sprint 02 — próxima
 
-Ver [[roadmap]] — foco em testes e validação de transição de status.
+Ver [[roadmap]] e [[sprint-02]] — foco em testes e validação de transição de status.
