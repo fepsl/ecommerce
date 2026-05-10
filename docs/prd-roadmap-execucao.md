@@ -1,6 +1,6 @@
 # PRD: Roadmap de Execução — Do Scaffold ao Portfólio
 
-**Status**: Em execução — Fase 1 quase concluída  
+**Status**: Em execução — Fases 1 e 2 concluídas  
 **Data**: 2026-05-10  
 **Última atualização**: 2026-05-10  
 **Autor**: Desenvolvedor
@@ -62,18 +62,18 @@ O projeto é o principal portfólio para estágio em Engenharia de Software. Um 
 - [x] `POST /auth/register` retorna JWT válido
 - [x] `POST /auth/login` retorna JWT com usuário do seed
 - [x] `POST /orders` com token válido cria pedido e debita estoque
-- [ ] Frontend abre no browser e consome a API (produtos listados na tela de produtos)
+- [x] Frontend abre no browser e consome a API (produtos listados na tela de produtos)
 
 ### RF-02: Fase 2 — Testes e qualidade (Sprint 02 real)
 **Como** desenvolvedor, **quero** cobertura de testes nas regras de negócio críticas, **para que** o código seja confiável e eu consiga explicar a estratégia de testes em entrevista.
 
 **Critérios de aceite:**
-- [ ] `AuthServiceTest`: registro com email duplicado retorna 409, login com senha errada retorna 401, token gerado é válido
-- [ ] `ProductServiceTest`: listagem com filtros, criação valida campos obrigatórios, produto inativo não aparece na listagem pública
-- [ ] `OrderServiceTest`: criação valida estoque antes de confirmar, `unit_price` salvo é o preço do momento da compra, usuário não vê pedidos de outros usuários
-- [ ] Teste de integração: fluxo register → login → endpoint protegido funciona com token real
-- [ ] `mvn test` passa sem erros com banco H2 in-memory
-- [ ] Cobertura mínima nas 3 services críticas: Auth, Order, Product
+- [x] `AuthServiceTest`: registro com email duplicado retorna 409, login com senha errada retorna 401, token gerado é válido
+- [x] `ProductServiceTest`: listagem com filtros, criação valida campos obrigatórios, produto inativo não aparece na listagem pública
+- [x] `OrderServiceTest`: criação valida estoque antes de confirmar, `unit_price` salvo é o preço do momento da compra, usuário não vê pedidos de outros usuários
+- [x] Teste de integração: fluxo register → login → endpoint protegido funciona com token real
+- [x] `mvn test` passa sem erros com banco H2 in-memory
+- [x] Cobertura mínima nas 3 services críticas: Auth, Order, Product
 
 ### RF-03: Fase 3 — Redesign visual VELN
 **Como** desenvolvedor, **quero** identidade visual dark e minimalista em todas as telas, **para que** o portfólio demonstre cuidado com UX além do código backend.
@@ -162,10 +162,10 @@ Nenhuma prevista. As migrations V1 e V2 já cobrem o schema completo e os dados 
 
 ## 8. Plano de Testes
 
-- [ ] **Fase 1 — Manual via Swagger**: todos os endpoints críticos testados com request/response corretos
-- [ ] **Fase 1 — Manual via browser**: fluxo completo do frontend com API rodando
-- [ ] **Fase 2 — Unitários (JUnit 5 + Mockito)**: AuthService, ProductService, OrderService
-- [ ] **Fase 2 — Integração**: register → login → endpoint protegido com token real
+- [x] **Fase 1 — Manual via Swagger**: todos os endpoints críticos testados com request/response corretos
+- [x] **Fase 1 — Manual via browser**: fluxo completo do frontend com API rodando
+- [x] **Fase 2 — Unitários (JUnit 5 + Mockito)**: AuthService, ProductService, OrderService
+- [x] **Fase 2 — Integração**: register → login → endpoint protegido com token real
 - [ ] **Fase 3 — Visual manual**: cada uma das 6 páginas abertas no Chrome e Firefox
 - [ ] **Fase 3 — Acessibilidade**: DevTools > Accessibility > Color Contrast em textos principais
 - [ ] **Fase 4 — Docker end-to-end**: fluxo completo no ambiente Docker sem Maven local
@@ -174,7 +174,7 @@ Nenhuma prevista. As migrations V1 e V2 já cobrem o schema completo e os dados 
 
 ## 9. Critérios de Done (DoD)
 
-- [ ] `mvn test` passa sem erros
+- [x] `mvn test` passa sem erros
 - [ ] `docker-compose up --build` sobe todos os serviços sem erros
 - [ ] Fluxo completo funcional: registro → login → produtos → carrinho → pedido
 - [ ] Todas as 6 telas com identidade visual VELN dark aplicada

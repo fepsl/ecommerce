@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e81bee927e6eeda3",
+        "id": "9cf0a45b7b7b0ea3",
         "type": "tabs",
         "children": [
           {
-            "id": "59febeabb5a96726",
+            "id": "8816237ac2f283d2",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Visualização em gráfico"
+              "type": "markdown",
+              "state": {
+                "file": "01-planejamento/roadmap.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "roadmap"
             }
           }
         ]
@@ -177,10 +181,12 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "59febeabb5a96726",
+  "active": "8816237ac2f283d2",
   "lastOpenFiles": [
-    "01-planejamento/roadmap.md",
     "index.md",
+    "01-planejamento/visao-geral.md",
+    "tasks-roadmap-execucao.md",
+    "01-planejamento/roadmap.md",
     "02-backend/arquitetura.md",
     "2026-05-10.md",
     "08-documentacao/glossario.md",
@@ -197,7 +203,6 @@
     "02-backend/regras-de-negocio.md",
     "02-backend/autenticacao-jwt.md",
     "02-backend/api-endpoints.md",
-    "01-planejamento/visao-geral.md",
     "08-documentacao",
     "07-decisoes",
     "06-sprints",
@@ -212,7 +217,6 @@
     "autenticacao-jwt.md",
     "banco-de-dados.md",
     "decisoes-tecnicas.md",
-    "roadmap.md",
-    "visao-geral.md"
+    "roadmap.md"
   ]
 }

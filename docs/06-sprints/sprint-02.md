@@ -2,7 +2,7 @@
 
 > [[roadmap|← Roadmap]]  
 > Data planejada: 2026-05-17  
-> Status: 🔵 Planejada
+> Status: 🟡 Em andamento
 
 ---
 
@@ -16,12 +16,12 @@ Elevar a qualidade do código com cobertura de testes significativa, fechar as d
 
 ### Testes unitários — Services
 
-- [ ] `OrderServiceTest` — casos críticos:
+- [x] `OrderServiceTest` — casos críticos:
   - Lança `InsufficientStockException` quando estoque insuficiente
   - `unit_price` copiado de `product.price` no momento da criação
   - Estoque decrementado corretamente após criação do pedido
   - Usuário não pode ver pedido de outro usuário (`UnauthorizedException`)
-- [ ] `AuthServiceTest`
+- [x] `AuthServiceTest`
   - Lança `EmailAlreadyExistsException` em email duplicado
   - Senha armazenada como BCrypt hash (não texto puro)
   - Token JWT retornado no login é válido
@@ -48,7 +48,7 @@ Elevar a qualidade do código com cobertura de testes significativa, fechar as d
 
 ### Qualidade geral
 
-- [ ] Cobertura de testes > 60% nos services (meta Sprint 02)
+- [x] Cobertura de testes > 60% nos services (meta Sprint 02)
 - [ ] Validação de URL em `image_url` do produto (`@Pattern` ou `@URL`)
 - [ ] Tratamento de erro básico no frontend (exibir mensagem amigável em caso de erro de API)
 

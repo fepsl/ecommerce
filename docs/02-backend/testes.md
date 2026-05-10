@@ -12,9 +12,9 @@ O projeto segue uma pirâmide de testes com foco em testes unitários de service
         /\
        /  \   E2E (futuro)
       /----\
-     /      \  Integração — @SpringBootTest + TestContainers (Fase 2)
+     /      \  Integração — @SpringBootTest + MockMvc + H2 (✅ concluída)
     /--------\
-   /          \  Unitários — JUnit 5 + Mockito (✅ em andamento)
+   /          \  Unitários — JUnit 5 + Mockito (✅ concluída — Auth, Product, Order)
   /____________\
 ```
 
@@ -91,29 +91,71 @@ O profile `test` é ativado automaticamente quando `@SpringBootTest` ou `@DataJp
 
 ---
 
-## Casos cobertos — ProductServiceTest
+## Casos cobertos
 
-| Teste | Cenário |
-|-------|---------|
-| `deveListarProdutosAtivos` | Repository retorna lista → service retorna DTOs corretamente mapeados |
-| `deveLancarExcecaoQuandoProdutoNaoEncontrado` | `findById` retorna vazio → lança `ResourceNotFoundException` |
-| `deveCriarProduto` | Dados válidos → salva entidade, retorna `ProductResponse` |
-| `deveDesativarProduto` | `DELETE` → `active = false`, não deleta do banco |
+### ProductServiceTest (8 testes)
+
+| Cenário |
+|---------|
+| `findAll()` sem filtros → delega ao repositório com parâmetros nulos |
+| `findAll()` com categoria → repassa UUID correto |
+| `findById()` produto ativo → retorna `ProductResponse` |
+| `findById()` produto inativo → lança `ResourceNotFoundException` |
+| `findById()` inexistente → lança `ResourceNotFoundException` |
+| `create()` com dados válidos → salva e retorna resposta |
+| `create()` com categoria inexistente → lança `ResourceNotFoundException`, não chama `save()` |
+| `deactivate()` → seta `active = false`, chama `save()` |
+
+### AuthServiceTest (5 testes)
+
+| Cenário |
+|---------|
+| `register()` com email novo → retorna `AuthResponse` com token |
+| `register()` com email duplicado → lança `EmailAlreadyExistsException`, não chama `save()` |
+| `register()` codifica senha com BCrypt antes de salvar |
+| `login()` com credenciais válidas → retorna `AuthResponse` com token |
+| `login()` com senha errada → lança `BadCredentialsException` |
+
+### OrderServiceTest (6 testes)
+
+| Cenário |
+|---------|
+| `create()` com quantidade > estoque → lança `InsufficientStockException` |
+| `create()` salva `unit_price` igual ao preço atual do produto |
+| `create()` decrementa estoque e chama `productRepository.save()` |
+| `findByUser()` retorna apenas pedidos do usuário informado |
+| `findById()` por USER acessando pedido alheio → lança `UnauthorizedException` |
+| `findById()` por ADMIN → pode ver pedido de qualquer usuário |
+
+### AuthIntegrationTest (4 testes — `@SpringBootTest` + MockMvc + H2)
+
+| Cenário |
+|---------|
+| `POST /auth/register` → 201 com token no corpo |
+| `POST /auth/login` → 200 com token no corpo |
+| Endpoint protegido sem token → 401 |
+| Endpoint protegido com token válido → 200 |
 
 ---
 
-## Testes planejados — Fase 2
+## Status da Fase 2
 
-### Cobertura target: 80% nos services
+| Service | Testes | Status |
+|---------|--------|--------|
+| `AuthService` | 5 unitários | ✅ Concluído |
+| `ProductService` | 8 unitários | ✅ Concluído |
+| `OrderService` | 6 unitários | ✅ Concluído |
+| Integração (AuthIntegrationTest) | 4 testes MockMvc | ✅ Concluído |
+| `UserService` | — | 🔵 Pendente |
+| `CategoryService` | — | 🔵 Pendente |
 
-| Service | Casos a cobrir |
-|---------|---------------|
-| `OrderService` | Estoque insuficiente, `unit_price` copiado corretamente, decremento de estoque |
-| `AuthService` | Email duplicado → 409, senha hasheada com BCrypt |
-| `UserService` | Upsert de endereço (criar e atualizar) |
-| `CategoryService` | CRUD básico, category vinculada a produto (não pode deletar) |
+**Total: 24 testes passando — `mvn test` BUILD SUCCESS**
 
-### TestContainers (PostgreSQL real)
+### Cobertura target: 80% nos services críticos (JaCoCo — configurar na Fase 3)
+
+### TestContainers (PostgreSQL real) — trabalho futuro
+
+Os testes de integração atuais usam H2 in-memory com MockMvc, o que é suficiente para o portfólio. TestContainers seria o próximo passo para uma cobertura mais fiel ao PostgreSQL de produção:
 
 ```java
 @SpringBootTest
@@ -122,7 +164,7 @@ class OrderControllerIntegrationTest {
 
     @Container
     static PostgreSQLContainer<?> postgres =
-        new PostgreSQLContainer<>("postgres:15-alpine");
+        new PostgreSQLContainer<>("postgres:17-alpine");
 
     @DynamicPropertySource
     static void configureProperties(DynamicPropertyRegistry registry) {
@@ -132,8 +174,8 @@ class OrderControllerIntegrationTest {
     }
 ```
 
-*Por que TestContainers e não H2?*  
-H2 não suporta todas as features do PostgreSQL (UUID nativo, `gen_random_uuid()`, etc.). Para testes de integração reais, PostgreSQL em container é o mais fiel ao ambiente de produção.
+*Por que H2 e não TestContainers agora?*  
+H2 é suficiente para validar a lógica de negócio nos services. TestContainers testa comportamentos específicos do PostgreSQL (UUID nativo, `gen_random_uuid()`, queries JSONB) — relevante quando a Fase 4 (Docker) estiver completa.
 
 ---
 

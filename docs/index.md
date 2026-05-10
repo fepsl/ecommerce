@@ -54,7 +54,7 @@
 | Nota | O que cobre |
 |------|------------|
 | [[sprint-01]] | Scaffold completo — ✅ Concluída |
-| [[sprint-02]] | Testes e qualidade — 🟡 Planejada |
+| [[sprint-02]] | Testes e qualidade — 🟡 Em andamento |
 
 ### 07 · Decisões Técnicas
 | Nota | O que cobre |
@@ -74,7 +74,7 @@
 |--------|-----------|
 | Backend | Java 17, Spring Boot 3, Spring Security 6 |
 | ORM | Spring Data JPA + Hibernate 6 |
-| Banco | PostgreSQL 15, Flyway |
+| Banco | PostgreSQL 17, Flyway |
 | Auth | JWT (jjwt 0.11.5) + BCrypt |
 | Testes | JUnit 5, Mockito, H2 |
 | Frontend | HTML5, CSS3, JavaScript ES Modules |

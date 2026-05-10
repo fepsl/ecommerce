@@ -4,7 +4,7 @@
 
 ---
 
-## Fase 1 — MVP (em andamento)
+## Fase 1 — MVP ✅
 
 **Objetivo**: API funcionando com autenticação, produtos, categorias e pedidos.
 
@@ -16,8 +16,8 @@
 - [x] Criar pedido com validação de estoque
 - [x] Listagem de pedidos do usuário
 - [x] Perfil e endereço do usuário
-- [ ] Testes unitários completos (services)
-- [ ] Teste de integração básico (controller layer)
+- [x] Testes unitários completos (services críticos: Auth, Product, Order)
+- [x] Teste de integração básico (controller layer — AuthIntegrationTest)
 - [ ] Validação de transição de status do pedido (ex: não pode ir de DELIVERED para PENDING)
 
 ## Fase 2 — Qualidade e robustez

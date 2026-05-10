@@ -22,7 +22,7 @@ Conseguir **estágio em Engenharia de Software** com um projeto que demonstre co
 - Java 17 + Spring Boot 3.2.5
 - Spring Security 6 + JWT (jjwt 0.11.5)
 - Spring Data JPA + Hibernate 6
-- PostgreSQL 15 + Flyway (migrations)
+- PostgreSQL 17 + Flyway (migrations)
 - Bean Validation + Lombok
 - SpringDoc OpenAPI / Swagger UI
 - Maven
