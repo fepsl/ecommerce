@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "403e53a6893977a7",
+        "id": "87d0283409647c6b",
         "type": "tabs",
         "children": [
           {
-            "id": "0930c37a6cb576e7",
+            "id": "8f21085c0fd41a2e",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Visualização em gráfico"
+              "type": "markdown",
+              "state": {
+                "file": "01-planejamento/roadmap.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "roadmap"
             }
           }
         ]
@@ -177,12 +181,14 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "0930c37a6cb576e7",
+  "active": "8f21085c0fd41a2e",
   "lastOpenFiles": [
-    "prd-fase-2-qualidade.md",
-    "tasks-fase-2-qualidade.md",
-    "index.md",
     "01-planejamento/roadmap.md",
+    "tasks-fase-2-qualidade.md",
+    "prd-roadmap-execucao.md.tmp.14092.e01724e8e64d",
+    "tasks-fase-2-qualidade.md.tmp.14092.84aa1462eb6b",
+    "index.md",
+    "prd-fase-2-qualidade.md",
     "prd-sprint-03-frontend.md",
     "tasks-roadmap-execucao.md",
     "04-banco/banco-de-dados.md",
@@ -208,12 +214,9 @@
     "02-backend/spring-boot.md.tmp.22368.0b66459b6d1f",
     "02-backend/testes.md",
     "02-backend/autenticacao-jwt.md",
-    "02-backend/api-endpoints.md",
     "08-documentacao",
     "07-decisoes",
     "06-sprints",
-    "05-devops",
-    "04-banco",
-    "03-frontend"
+    "05-devops"
   ]
 }

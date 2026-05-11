@@ -1,8 +1,8 @@
 # PRD: Roadmap de Execução — Do Scaffold ao Portfólio
 
-**Status**: Em execução — Fases 1, 2 e 3 concluídas  
+**Status**: Em execução — Fases 1, 2 e 3 concluídas (QA visual e Docker pendentes)  
 **Data**: 2026-05-10  
-**Última atualização**: 2026-05-10  
+**Última atualização**: 2026-05-11  
 **Autor**: Desenvolvedor
 
 > [[index|← Índice]] · [[roadmap]] · [[sprint-01]] · [[sprint-02]] · [[tasks-roadmap-execucao]]
@@ -81,7 +81,8 @@ O projeto é o principal portfólio para estágio em Engenharia de Software. Um 
 - [x] `OrderServiceUpdateStatusTest`: 16 testes de transição de status (válidas e inválidas)
 - [x] `InvalidStatusTransitionException` lança HTTP 422 para transições inválidas
 - [x] `@Pattern` em `imageUrl` do produto — HTTP 400 para URLs inválidas
-- [x] 51 testes no total, 0 falhas
+- [x] 78 testes no total (52 unitários + 26 integração), 0 falhas
+- [x] Testes de integração migrados de Testcontainers para H2 in-memory (sem dependência de Docker)
 
 ### RF-03: Fase 3 — Redesign visual VELN
 **Como** desenvolvedor, **quero** identidade visual dark e minimalista em todas as telas, **para que** o portfólio demonstre cuidado com UX além do código backend.

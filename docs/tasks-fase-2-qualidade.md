@@ -169,8 +169,8 @@ TASK-09 (Paginação frontend) → independente
 - `backend/src/test/java/com/ecommerce/integration/ProductControllerIT.java`
 
 **Critério de done:**
-- [ ] Todos os testes passam com `mvn test`
-- [ ] Produto criado no teste é isolado (não vaza entre testes via `@Transactional` ou limpeza)
+- [x] Todos os testes passam com `mvn test`
+- [x] Produto criado no teste é isolado (não vaza entre testes via `@Transactional` ou limpeza)
 
 ---
 
@@ -197,7 +197,7 @@ TASK-09 (Paginação frontend) → independente
 - `backend/src/test/java/com/ecommerce/integration/CategoryControllerIT.java`
 
 **Critério de done:**
-- [ ] Todos os testes passam
+- [x] Todos os testes passam
 
 ---
 
@@ -224,8 +224,8 @@ TASK-09 (Paginação frontend) → independente
 - `backend/src/test/java/com/ecommerce/integration/OrderControllerIT.java`
 
 **Critério de done:**
-- [ ] Todos os testes passam
-- [ ] Teste de estoque verifica que o campo `stock` do produto foi decrementado
+- [x] Todos os testes passam
+- [x] Teste de estoque verifica que o campo `stock` do produto foi decrementado
 
 ---
 
@@ -250,8 +250,8 @@ TASK-09 (Paginação frontend) → independente
 - `backend/src/test/java/com/ecommerce/integration/UserControllerIT.java`
 
 **Critério de done:**
-- [ ] Todos os testes passam
-- [ ] Teste de upsert verifica que só existe 1 endereço no banco após 2 chamadas
+- [x] Todos os testes passam
+- [x] Teste de upsert verifica que só existe 1 endereço no banco após 2 chamadas
 
 ---
 
