@@ -34,7 +34,7 @@ async function loadProducts(page = 0) {
     try {
         const data = await api.get(`/products?${params}`);
         renderProducts(data.content);
-        renderPagination(data);
+        renderPagination(data.number, data.totalPages);
         currentPage = page;
         return data;
     } catch (err) {
@@ -87,18 +87,33 @@ function renderProducts(products) {
     });
 }
 
-function renderPagination(page) {
+function renderPagination(current, total) {
     const el = document.querySelector('#pagination');
     if (!el) return;
 
+    if (total <= 1) { el.innerHTML = ''; return; }
+
+    // Páginas vizinhas: atual ± 2
+    const pages = [];
+    for (let i = Math.max(0, current - 2); i <= Math.min(total - 1, current + 2); i++) {
+        pages.push(i);
+    }
+
+    const pageButtons = pages.map(p => `
+        <button class="btn-page ${p === current ? 'active' : ''}" data-page="${p}">${p + 1}</button>
+    `).join('');
+
     el.innerHTML = `
-        <button id="btn-prev" ${page.first ? 'disabled' : ''}>← Anterior</button>
-        <span>Página ${page.number + 1} de ${page.totalPages}</span>
-        <button id="btn-next" ${page.last ? 'disabled' : ''}>Próxima →</button>
+        <div class="pagination">
+            <button class="btn-page" data-page="${current - 1}" ${current === 0 ? 'disabled' : ''}>← Anterior</button>
+            ${pageButtons}
+            <button class="btn-page" data-page="${current + 1}" ${current === total - 1 ? 'disabled' : ''}>Próximo →</button>
+        </div>
     `;
 
-    el.querySelector('#btn-prev')?.addEventListener('click', () => loadProducts(currentPage - 1));
-    el.querySelector('#btn-next')?.addEventListener('click', () => loadProducts(currentPage + 1));
+    el.querySelectorAll('.btn-page:not(:disabled)').forEach(btn => {
+        btn.addEventListener('click', () => loadProducts(Number(btn.dataset.page)));
+    });
 }
 
 function showToast(message) {

@@ -32,6 +32,18 @@ server:
     include-message: always
     include-binding-errors: always
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: when-authorized
+
+rate-limit:
+  requests-per-minute: 20
+
 springdoc:
   api-docs:
     path: /v3/api-docs

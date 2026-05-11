@@ -347,15 +347,15 @@ input:-webkit-autofill:focus {
 .filters select option { background: var(--surface-2); }
 
 /* ── Paginação ────────────────────────────────────────────────── */
-#pagination {
+.pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: .5rem;
     padding: 2rem 0;
 }
 
-#pagination button {
+.btn-page {
     padding: .5rem 1rem;
     border: 1px solid var(--border);
     background: transparent;
@@ -368,8 +368,9 @@ input:-webkit-autofill:focus {
     text-transform: uppercase;
     transition: all var(--transition);
 }
-#pagination button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
-#pagination button:disabled { opacity: .3; cursor: not-allowed; }
+.btn-page:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.btn-page.active { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.btn-page:disabled { opacity: .4; cursor: not-allowed; }
 
 /* ── Carrinho ─────────────────────────────────────────────────── */
 .cart-layout { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; padding: 2rem 0; }

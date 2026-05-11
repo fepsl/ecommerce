@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "ec6d6abb848f693c",
+        "id": "403e53a6893977a7",
         "type": "tabs",
         "children": [
           {
-            "id": "720c49483ae793cc",
+            "id": "0930c37a6cb576e7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "01-planejamento/roadmap.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "roadmap"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
             }
           }
         ]
@@ -181,14 +177,16 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "720c49483ae793cc",
+  "active": "0930c37a6cb576e7",
   "lastOpenFiles": [
-    "prd-sprint-03-frontend.md",
+    "prd-fase-2-qualidade.md",
+    "tasks-fase-2-qualidade.md",
     "index.md",
+    "01-planejamento/roadmap.md",
+    "prd-sprint-03-frontend.md",
     "tasks-roadmap-execucao.md",
     "04-banco/banco-de-dados.md",
     "07-decisoes/decisoes-tecnicas.md",
-    "01-planejamento/roadmap.md",
     "tasks-sprint-03-frontend.md",
     "01-planejamento/visao-geral.md",
     "06-sprints/sprint-02.md",
@@ -216,8 +214,6 @@
     "06-sprints",
     "05-devops",
     "04-banco",
-    "03-frontend",
-    "sprints/sprint-01.md",
-    "api-endpoints.md"
+    "03-frontend"
   ]
 }
