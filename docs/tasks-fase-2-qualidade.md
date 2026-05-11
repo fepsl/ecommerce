@@ -331,4 +331,7 @@ TASK-09 (Paginação frontend) → independente
 | TASK-08 | Rate limiting | ✅ Concluído |
 | TASK-09 | Paginação frontend | ✅ Concluído |
 
-**Resultado dos testes (2026-05-11):** 55 testes unitários passando. 4 testes de integração com erro de ambiente (Testcontainers não conecta ao Docker Desktop no Windows via named pipe). Código correto — problema de configuração local.
+**Resultado dos testes (2026-05-11):** 78 testes passando — 52 unitários + 26 de integração. Zero falhas, zero erros.
+
+Testes de integração migrados de Testcontainers para H2 in-memory (sem Docker).
+Bugs encontrados e corrigidos durante a execução: `@Transactional(readOnly = true)` ausente em `ProductService.findById/findAll`, e status esperado errado (200 vs 204) em `deleteProduct`.

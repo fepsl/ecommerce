@@ -99,7 +99,7 @@ class ProductControllerIT extends BaseIntegrationTest {
 
         mockMvc.perform(delete("/products/" + id)
                         .header("Authorization", "Bearer " + token))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
 
         // Produto inativo não aparece na listagem pública
         mockMvc.perform(get("/products").param("name", "Produto Para Deletar"))

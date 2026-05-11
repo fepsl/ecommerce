@@ -12,3 +12,6 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
   flyway:
     enabled: false
+
+rate-limit:
+  requests-per-minute: 10000

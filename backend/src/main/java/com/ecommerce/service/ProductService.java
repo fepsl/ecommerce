@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -23,6 +24,7 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
 
+    @Transactional(readOnly = true)
     public Page<ProductResponse> findAll(String name, UUID categoryId,
                                          BigDecimal minPrice, BigDecimal maxPrice,
                                          Pageable pageable) {
@@ -31,6 +33,7 @@ public class ProductService {
                 .map(this::toResponse);
     }
 
+    @Transactional(readOnly = true)
     public ProductResponse findById(UUID id) {
         return toResponse(getActiveOrThrow(id));
     }
