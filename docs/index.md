@@ -1,4 +1,4 @@
-# ModaShop — Base de Conhecimento
+# VELN — Base de Conhecimento
 
 > Vault Obsidian do projeto de portfólio e-commerce de roupas.  
 > Abra esta pasta como vault no Obsidian para navegação com links internos.
@@ -10,7 +10,7 @@
 | Campo      | Valor                                              |
 | ---------- | -------------------------------------------------- |
 | Status     | 🟡 Em desenvolvimento                              |
-| Fase atual | Sprint 02 — Testes e qualidade                     |
+| Fase atual | Sprint 03 concluída — iniciando Fase 2 do roadmap  |
 | Stack      | Java 17 + Spring Boot 3 + PostgreSQL + HTML/CSS/JS |
 | Objetivo   | Portfólio para estágio em Engenharia de Software   |
 
@@ -54,7 +54,8 @@
 | Nota | O que cobre |
 |------|------------|
 | [[sprint-01]] | Scaffold completo — ✅ Concluída |
-| [[sprint-02]] | Testes e qualidade — 🟡 Em andamento |
+| [[sprint-02]] | Testes e qualidade — ✅ Concluída |
+| [[sprint-03-frontend]] | Frontend editorial + página de produto — ✅ Concluída |
 
 ### PRDs e Tasks
 | Nota | O que cobre |
@@ -63,6 +64,10 @@
 | [[tasks-roadmap-execucao]] | Tasks de execução das 4 fases (TASK-01 a TASK-17) |
 | [[prd-redesign-veln]] | Redesign visual dark VELN — Rascunho |
 | [[tasks-redesign-veln]] | Tasks do redesign VELN (TASK-11 a TASK-16) |
+| [[prd-sprint-03-frontend]] | Frontend editorial + página de produto — ✅ Concluído |
+| [[tasks-sprint-03-frontend]] | Tasks da Sprint 03 (TASK-01 a TASK-08) — ✅ Todas concluídas |
+| [[prd-fase-2-qualidade]] | Qualidade e robustez — Actuator, Logs, TestContainers, Rate limit, Paginação |
+| [[tasks-fase-2-qualidade]] | Tasks da Fase 2 (TASK-01 a TASK-09) — Planejadas |
 
 ### 07 · Decisões Técnicas
 | Nota | O que cobre |

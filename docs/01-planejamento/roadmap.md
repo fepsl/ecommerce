@@ -18,7 +18,7 @@
 - [x] Perfil e endereço do usuário
 - [x] Testes unitários completos (services críticos: Auth, Product, Order)
 - [x] Teste de integração básico (controller layer — AuthIntegrationTest)
-- [ ] Validação de transição de status do pedido (ex: não pode ir de DELIVERED para PENDING)
+- [x] Validação de transição de status do pedido (ex: não pode ir de DELIVERED para PENDING)
 
 ## Fase 2 — Qualidade e robustez
 
@@ -46,12 +46,12 @@
 
 ## Dívidas técnicas conhecidas
 
-| Item | Impacto | Esforço |
-|------|---------|---------|
-| Validação de transição de status de pedido | Médio | Baixo |
-| Falta de testes nos controllers | Alto | Médio |
-| `image_url` é string livre — sem validação de URL | Baixo | Baixo |
-| Frontend sem tratamento de erro consistente | Médio | Médio |
+| Item | Impacto | Esforço | Status |
+|------|---------|---------|--------|
+| ~~Validação de transição de status de pedido~~ | Médio | Baixo | ✅ Resolvido na Sprint 02 |
+| Falta de testes nos controllers | Alto | Médio | Pendente |
+| ~~`image_url` é string livre — sem validação de URL~~ | Baixo | Baixo | ✅ Resolvido na Sprint 02 |
+| ~~Frontend sem tratamento de erro consistente~~ | Médio | Médio | ✅ Resolvido na Sprint 03 |
 
 ## Relacionado
 
