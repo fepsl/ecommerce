@@ -1,9 +1,11 @@
 # PRD: Roadmap de Execução — Do Scaffold ao Portfólio
 
-**Status**: Em execução — Fases 1 e 2 concluídas  
+**Status**: Em execução — Fases 1, 2 e 3 concluídas  
 **Data**: 2026-05-10  
 **Última atualização**: 2026-05-10  
 **Autor**: Desenvolvedor
+
+> [[index|← Índice]] · [[roadmap]] · [[sprint-01]] · [[sprint-02]] · [[tasks-roadmap-execucao]]
 
 ---
 
@@ -74,18 +76,24 @@ O projeto é o principal portfólio para estágio em Engenharia de Software. Um 
 - [x] Teste de integração: fluxo register → login → endpoint protegido funciona com token real
 - [x] `mvn test` passa sem erros com banco H2 in-memory
 - [x] Cobertura mínima nas 3 services críticas: Auth, Order, Product
+- [x] `UserServiceTest`: upsert de endereço (create e update)
+- [x] `CategoryServiceTest`: CRUD completo + empty list + not found
+- [x] `OrderServiceUpdateStatusTest`: 16 testes de transição de status (válidas e inválidas)
+- [x] `InvalidStatusTransitionException` lança HTTP 422 para transições inválidas
+- [x] `@Pattern` em `imageUrl` do produto — HTTP 400 para URLs inválidas
+- [x] 51 testes no total, 0 falhas
 
 ### RF-03: Fase 3 — Redesign visual VELN
 **Como** desenvolvedor, **quero** identidade visual dark e minimalista em todas as telas, **para que** o portfólio demonstre cuidado com UX além do código backend.
 
 **Critérios de aceite:**
-- [ ] TASK-01: Sistema de design CSS (variáveis, tipografia Cormorant + Inter, autofill override)
-- [ ] TASK-02: Navbar VELN em todas as 6 páginas, sem rastro de "ModaShop", sem emojis funcionais
-- [ ] TASK-03: Hero da home com tipografia editorial e CTA com hover de inversão
-- [ ] TASK-04: Cards de produto com proporção 3/4 e hover suave
-- [ ] TASK-05: Formulários de login e cadastro no tema dark
-- [ ] TASK-06: Carrinho e pedidos com badges de status reestilizados
-- [ ] TASK-07: QA visual — contraste WCAG AA validado, zero hardcoded colors fora do `:root`
+- [x] TASK-11: Sistema de design CSS — paleta dark, Cormorant Garamond + Inter, autofill override
+- [x] TASK-12: Navbar VELN em todas as 6 páginas — sem "ModaShop", sem emojis, hover underline animado
+- [x] TASK-13: Hero da home — headline serifada `clamp(2.5rem, 6vw, 5rem)`, CTA com hover de inversão, `<style>` inline removido
+- [x] TASK-14: Cards de produto — proporção `3/4`, hover suave com `opacity 0→1`, filtros e paginação dark
+- [x] TASK-15: Formulários dark — inputs `#0a0a0a`, labels uppercase, botão branco/preto, autofill correto
+- [x] TASK-16: Carrinho e pedidos — separadores sutis, summary sticky, badges com borda sem fundo pastel
+- [ ] TASK-17: QA visual — contraste WCAG AA validado, zero hardcoded colors fora do `:root`
 
 ### RF-04: Fase 4 — Docker e validação final
 **Como** desenvolvedor, **quero** o projeto rodando com um único comando, **para que** qualquer recrutador consiga subir e testar localmente.

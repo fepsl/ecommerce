@@ -30,8 +30,10 @@ banco de dados relacional, autenticação JWT e frontend vanilla.
 git clone <url-do-repositorio>
 cd ecommerce
 cp .env.example .env
-# Edite o .env e troque os valores padrão, especialmente o JWT_SECRET
+# Edite o .env e troque o JWT_SECRET por uma string aleatória de 32+ caracteres
 ```
+
+> O arquivo `.env` está no `.gitignore` e nunca é versionado.
 
 ### 2. Subir os containers
 
@@ -43,10 +45,21 @@ docker-compose up --build
 
 | Serviço | URL |
 |---------|-----|
+| Frontend | http://localhost:3000 |
 | API REST | http://localhost:8080 |
 | Swagger UI | http://localhost:8080/swagger-ui.html |
-| Frontend | http://localhost:3000 |
 | Adminer (banco) | http://localhost:8081 |
+
+### 4. Usuários de seed
+
+O banco é populado automaticamente com dois usuários:
+
+| Email | Senha | Role |
+|-------|-------|------|
+| `admin@ecommerce.com` | `senha123` | ADMIN |
+| `cliente@ecommerce.com` | `senha123` | USER |
+
+O ADMIN tem acesso a criar produtos, categorias e atualizar status de pedidos. O USER realiza compras normalmente pelo frontend.
 
 ---
 

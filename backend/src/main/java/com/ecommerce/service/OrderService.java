@@ -6,6 +6,7 @@ import com.ecommerce.dto.request.OrderStatusRequest;
 import com.ecommerce.dto.response.OrderItemResponse;
 import com.ecommerce.dto.response.OrderResponse;
 import com.ecommerce.exception.InsufficientStockException;
+import com.ecommerce.exception.InvalidStatusTransitionException;
 import com.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.exception.UnauthorizedException;
 import com.ecommerce.model.*;
@@ -18,11 +19,21 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class OrderService {
+
+    private static final Map<OrderStatus, Set<OrderStatus>> VALID_TRANSITIONS = Map.of(
+        OrderStatus.PENDING,   Set.of(OrderStatus.PAID, OrderStatus.CANCELLED),
+        OrderStatus.PAID,      Set.of(OrderStatus.SHIPPED, OrderStatus.CANCELLED),
+        OrderStatus.SHIPPED,   Set.of(OrderStatus.DELIVERED, OrderStatus.CANCELLED),
+        OrderStatus.DELIVERED, Set.of(),
+        OrderStatus.CANCELLED, Set.of()
+    );
 
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
@@ -94,7 +105,14 @@ public class OrderService {
     @Transactional
     public OrderResponse updateStatus(UUID id, OrderStatusRequest request) {
         Order order = getOrThrow(id);
-        order.setStatus(request.getStatus());
+        OrderStatus current = order.getStatus();
+        OrderStatus next = request.getStatus();
+
+        if (!VALID_TRANSITIONS.getOrDefault(current, Set.of()).contains(next)) {
+            throw new InvalidStatusTransitionException(current, next);
+        }
+
+        order.setStatus(next);
         return toResponse(orderRepository.save(order));
     }
 

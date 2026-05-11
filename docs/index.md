@@ -7,22 +7,22 @@
 
 ## Estado do projeto
 
-| Campo | Valor |
-|-------|-------|
-| Status | 🟡 Em desenvolvimento |
-| Fase atual | Sprint 02 — Testes e qualidade |
-| Stack | Java 17 + Spring Boot 3 + PostgreSQL + HTML/CSS/JS |
-| Objetivo | Portfólio para estágio em Engenharia de Software |
+| Campo      | Valor                                              |
+| ---------- | -------------------------------------------------- |
+| Status     | 🟡 Em desenvolvimento                              |
+| Fase atual | Sprint 02 — Testes e qualidade                     |
+| Stack      | Java 17 + Spring Boot 3 + PostgreSQL + HTML/CSS/JS |
+| Objetivo   | Portfólio para estágio em Engenharia de Software   |
 
 ---
 
 ## Mapa de navegação
 
 ### 01 · Planejamento
-| Nota | O que cobre |
-|------|------------|
-| [[visao-geral]] | Stack completa, acessos locais, usuários de seed |
-| [[roadmap]] | Fases do projeto, features pendentes, dívidas técnicas |
+| Nota            | O que cobre                                            |
+| --------------- | ------------------------------------------------------ |
+| [[visao-geral]] | Stack completa, acessos locais, usuários de seed       |
+| [[roadmap]]     | Fases do projeto, features pendentes, dívidas técnicas |
 
 ### 02 · Backend
 | Nota | O que cobre |
@@ -55,6 +55,14 @@
 |------|------------|
 | [[sprint-01]] | Scaffold completo — ✅ Concluída |
 | [[sprint-02]] | Testes e qualidade — 🟡 Em andamento |
+
+### PRDs e Tasks
+| Nota | O que cobre |
+|------|------------|
+| [[prd-roadmap-execucao]] | Roadmap do scaffold ao portfólio — Fases 1 e 2 concluídas |
+| [[tasks-roadmap-execucao]] | Tasks de execução das 4 fases (TASK-01 a TASK-17) |
+| [[prd-redesign-veln]] | Redesign visual dark VELN — Rascunho |
+| [[tasks-redesign-veln]] | Tasks do redesign VELN (TASK-11 a TASK-16) |
 
 ### 07 · Decisões Técnicas
 | Nota | O que cobre |

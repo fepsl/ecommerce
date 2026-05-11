@@ -15,10 +15,16 @@ async function loadProducts(page = 0) {
         ...(filters.maxPrice && { maxPrice: filters.maxPrice }),
     });
 
-    const data = await api.get(`/products?${params}`);
-    renderProducts(data.content);
-    renderPagination(data);
-    return data;
+    try {
+        const data = await api.get(`/products?${params}`);
+        renderProducts(data.content);
+        renderPagination(data);
+        currentPage = page;
+        return data;
+    } catch (err) {
+        const grid = document.querySelector('#products-grid');
+        if (grid) grid.innerHTML = `<p class="empty-state">Não foi possível carregar os produtos. Tente novamente.</p>`;
+    }
 }
 
 function renderProducts(products) {
@@ -83,12 +89,15 @@ function showToast(message) {
 }
 
 async function loadCategories() {
-    const categories = await api.get('/categories');
-    const select = document.querySelector('#filter-category');
-    if (!select) return;
-
-    select.innerHTML = '<option value="">Todas as categorias</option>' +
-        categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    try {
+        const categories = await api.get('/categories');
+        const select = document.querySelector('#filter-category');
+        if (!select) return;
+        select.innerHTML = '<option value="">Todas as categorias</option>' +
+            categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    } catch {
+        // filtro de categoria simplesmente fica sem opções se a API falhar
+    }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

@@ -22,6 +22,7 @@ public class ProductRequest {
     @Min(value = 0, message = "Estoque não pode ser negativo")
     private Integer stock;
 
+    @Pattern(regexp = "^(https?://.+)?$", message = "URL da imagem inválida")
     private String imageUrl;
 
     private UUID categoryId;

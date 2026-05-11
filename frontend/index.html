@@ -3,41 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ModaShop — E-commerce de Roupas</title>
+    <title>VELN — E-commerce de Roupas</title>
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            padding: 5rem 0;
-            text-align: center;
-        }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .hero h1 span { color: #e94560; }
-        .hero p { font-size: 1.2rem; opacity: .8; margin-bottom: 2rem; }
-        .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-hero { padding: .9rem 2rem; font-size: 1rem; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; transition: all .2s; }
-        .btn-hero-primary { background: #e94560; color: #fff; }
-        .btn-hero-primary:hover { background: #c73652; transform: translateY(-2px); }
-        .btn-hero-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.5); }
-        .btn-hero-outline:hover { border-color: #fff; transform: translateY(-2px); }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; padding: 3rem 0; }
-        .feature-card { background: #fff; border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
-        .feature-card .icon { font-size: 2.5rem; margin-bottom: .75rem; }
-        .feature-card h3 { font-size: 1rem; margin-bottom: .4rem; }
-        .feature-card p { font-size: .85rem; color: #888; }
-    </style>
 </head>
 <body>
 
 <nav class="navbar">
     <div class="container">
-        <a href="index.html" class="navbar-brand">Moda<span>Shop</span></a>
+        <a href="index.html" class="navbar-brand">VELN</a>
         <ul class="navbar-nav">
             <li><a href="pages/products.html">Produtos</a></li>
             <li id="nav-auth"><a href="pages/login.html">Entrar</a></li>
             <li class="cart-icon">
-                <a href="pages/cart.html">🛒 <span id="cart-count">0</span></a>
+                <a href="pages/cart.html">Carrinho <span id="cart-count">0</span></a>
             </li>
         </ul>
     </div>
@@ -45,7 +23,7 @@
 
 <section class="hero">
     <div class="container">
-        <h1>Moda que <span>combina</span> com você</h1>
+        <h1>Moda que combina com você</h1>
         <p>Camisetas, calças, vestidos e acessórios com qualidade e estilo</p>
         <div class="hero-actions">
             <a href="pages/products.html" class="btn-hero btn-hero-primary">Ver Produtos</a>
@@ -54,30 +32,16 @@
     </div>
 </section>
 
-<main class="container">
-    <div class="features">
-        <div class="feature-card">
-            <div class="icon">🚚</div>
-            <h3>Frete Rápido</h3>
-            <p>Entrega em todo o Brasil</p>
-        </div>
-        <div class="feature-card">
-            <div class="icon">🔒</div>
-            <h3>Compra Segura</h3>
-            <p>Seus dados protegidos</p>
-        </div>
-        <div class="feature-card">
-            <div class="icon">↩️</div>
-            <h3>Troca Fácil</h3>
-            <p>30 dias para troca</p>
-        </div>
-        <div class="feature-card">
-            <div class="icon">💳</div>
-            <h3>Parcelamento</h3>
-            <p>Até 12x sem juros</p>
+<section class="features">
+    <div class="container">
+        <div class="features-values">
+            <span>Frete Rápido</span>
+            <span>Compra Segura</span>
+            <span>30 dias para troca</span>
+            <span>Até 12x sem juros</span>
         </div>
     </div>
-</main>
+</section>
 
 <script type="module">
     import { isAuthenticated, logout, getCurrentUser } from './js/auth.js';
@@ -89,7 +53,7 @@
     if (isAuthenticated()) {
         const user = getCurrentUser();
         navAuth.innerHTML = `
-            <span style="color:rgba(255,255,255,.7)">${user.name.split(' ')[0]}</span>
+            <span style="color:var(--text-muted)">${user.name.split(' ')[0]}</span>
             <a href="#" id="logout-btn" style="margin-left:.5rem">Sair</a>
         `;
         document.querySelector('#logout-btn').addEventListener('click', e => {
