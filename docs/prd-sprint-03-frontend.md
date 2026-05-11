@@ -1,7 +1,8 @@
 # PRD: Sprint 03 — Frontend Editorial & Página de Produto
 
-**Status**: Rascunho  
+**Status**: Concluído  
 **Data**: 2026-05-10  
+**Concluído em**: 2026-05-10  
 **Autor**: Desenvolvedor
 
 ---
@@ -52,10 +53,10 @@ Dois problemas principais:
 **Como** visitante, **quero** ler sobre o que é a VELN, **para que** eu entenda a proposta da marca antes de explorar os produtos.
 
 **Critérios de aceite:**
-- [ ] Seção posicionada logo abaixo do hero
-- [ ] Texto de manifesto em Cormorant Garamond, tom elegante e conciso
-- [ ] Layout minimalista — texto centralizado ou com elemento visual sutil à esquerda
-- [ ] Sem imagens externas obrigatórias (funciona com texto + divisor)
+- [x] Seção posicionada logo abaixo do hero
+- [x] Texto de manifesto em Cormorant Garamond, tom elegante e conciso
+- [x] Layout minimalista — texto centralizado ou com elemento visual sutil à esquerda
+- [x] Sem imagens externas obrigatórias (funciona com texto + divisor)
 
 ---
 
@@ -64,11 +65,11 @@ Dois problemas principais:
 **Como** visitante, **quero** ver uma seleção curada de produtos na home, **para que** eu seja introduzido ao catálogo sem precisar ir à página de produtos.
 
 **Critérios de aceite:**
-- [ ] Exibe os primeiros 3 ou 4 produtos da API (`GET /products?size=4`)
-- [ ] Cards no mesmo estilo da página de produtos (aspecto 3/4, hover com botão)
-- [ ] Título da seção em Cormorant Garamond ("Coleção" ou "Seleção")
-- [ ] Link "Ver coleção completa" que leva para `/pages/products.html`
-- [ ] Clique no card leva para a página de detalhe do produto (RF-03)
+- [x] Exibe os primeiros 3 ou 4 produtos da API (`GET /products?size=4`)
+- [x] Cards no mesmo estilo da página de produtos (aspecto 3/4, hover com botão)
+- [x] Título da seção em Cormorant Garamond ("Coleção" ou "Seleção")
+- [x] Link "Ver coleção completa" que leva para `/pages/products.html`
+- [x] Clique no card leva para a página de detalhe do produto (RF-03)
 
 ---
 
@@ -77,12 +78,12 @@ Dois problemas principais:
 **Como** cliente, **quero** ver todos os detalhes de um produto antes de comprar, **para que** eu tome uma decisão de compra informada.
 
 **Critérios de aceite:**
-- [ ] Página acessível em `/pages/product.html?id=<uuid>`
-- [ ] Clique em qualquer card de produto (home e catálogo) redireciona para essa página
-- [ ] Exibe: imagem grande, nome, categoria, preço, descrição completa, estoque
-- [ ] Botão "Adicionar ao carrinho" funcional (mesmo comportamento do card)
-- [ ] Se produto inativo ou não encontrado, exibe mensagem de erro elegante
-- [ ] Breadcrumb ou link "← Voltar para produtos"
+- [x] Página acessível em `/pages/product.html?id=<uuid>`
+- [x] Clique em qualquer card de produto (home e catálogo) redireciona para essa página
+- [x] Exibe: imagem grande, nome, categoria, preço, descrição completa, estoque
+- [x] Botão "Adicionar ao carrinho" funcional (mesmo comportamento do card)
+- [x] Se produto inativo ou não encontrado, exibe mensagem de erro elegante
+- [x] Breadcrumb ou link "← Voltar para produtos"
 
 ---
 
@@ -91,10 +92,10 @@ Dois problemas principais:
 **Como** cliente, **quero** aproximar a imagem do produto, **para que** eu possa ver os detalhes da peça antes de comprar.
 
 **Critérios de aceite:**
-- [ ] Hover na imagem ativa o zoom (CSS `transform: scale` + `overflow: hidden` no container)
-- [ ] Transição suave (`.3s ease`)
-- [ ] Cursor muda para `zoom-in` ao passar sobre a imagem
-- [ ] Não abre modal — zoom inline, sem interromper o fluxo da página
+- [x] Hover na imagem ativa o zoom (CSS `transform: scale` + `overflow: hidden` no container)
+- [x] Transição suave (`.3s ease`)
+- [x] Cursor muda para `zoom-in` ao passar sobre a imagem
+- [x] Não abre modal — zoom inline, sem interromper o fluxo da página
 
 ---
 
@@ -103,11 +104,11 @@ Dois problemas principais:
 **Como** cliente, **quero** ver outros produtos da mesma categoria, **para que** eu descubra mais opções sem voltar para o catálogo.
 
 **Critérios de aceite:**
-- [ ] Exibe até 3 produtos da mesma categoria, excluindo o produto atual
-- [ ] Usa `GET /products?category=<id>&size=4` e filtra o atual no frontend
-- [ ] Layout em linha horizontal, mesmo estilo dos cards do catálogo
-- [ ] Título "Você também pode gostar" ou similar em Cormorant Garamond
-- [ ] Se não houver produtos relacionados, seção não aparece
+- [x] Exibe até 3 produtos da mesma categoria, excluindo o produto atual
+- [x] Usa `GET /products?category=<id>&size=4` e filtra o atual no frontend
+- [x] Layout em linha horizontal, mesmo estilo dos cards do catálogo
+- [x] Título "Você também pode gostar" ou similar em Cormorant Garamond
+- [x] Se não houver produtos relacionados, seção não aparece
 
 ---
 
@@ -116,11 +117,11 @@ Dois problemas principais:
 **Como** visitante, **quero** ver um indicador visual enquanto os produtos carregam, **para que** a página não pareça quebrada durante o fetch.
 
 **Critérios de aceite:**
-- [ ] Skeleton com mesmas dimensões do card real (aspecto 3/4 + área de texto)
-- [ ] Animação de pulse (`@keyframes` com `opacity` oscilando)
-- [ ] Fundo `var(--surface-3)` para contrastar com `var(--surface-2)` do card
-- [ ] Exibe 4 skeletons por padrão enquanto carrega
-- [ ] Substituído pelos cards reais assim que a resposta chega
+- [x] Skeleton com mesmas dimensões do card real (aspecto 3/4 + área de texto)
+- [x] Animação de pulse (`@keyframes` com `opacity` oscilando)
+- [x] Fundo `var(--surface-3)` para contrastar com `var(--surface-2)` do card
+- [x] Exibe 4 skeletons por padrão enquanto carrega
+- [x] Substituído pelos cards reais assim que a resposta chega
 
 ---
 
@@ -129,10 +130,10 @@ Dois problemas principais:
 **Como** cliente, **quero** ver uma mensagem adequada quando não há itens no carrinho ou pedidos, **para que** a página não pareça quebrada.
 
 **Critérios de aceite:**
-- [ ] Carrinho vazio: mensagem + link direto para `/pages/products.html`
-- [ ] Pedidos vazios: mensagem + link para `/pages/products.html`
-- [ ] Texto em Cormorant Garamond, tom elegante (não "Nenhum item encontrado")
-- [ ] Sem ícones genéricos — manter o minimalismo VELN
+- [x] Carrinho vazio: mensagem + link direto para `/pages/products.html`
+- [x] Pedidos vazios: mensagem + link para `/pages/products.html`
+- [x] Texto em Cormorant Garamond, tom elegante (não "Nenhum item encontrado")
+- [x] Sem ícones genéricos — manter o minimalismo VELN
 
 ---
 
@@ -181,18 +182,18 @@ Nenhuma. Esta sprint é 100% frontend.
 
 ## 7. Riscos e Dependências
 
-| Risco | Probabilidade | Impacto | Mitigação |
-|-------|---------------|---------|-----------|
-| Imagens de produto com URLs quebradas deixam a home feia | Alta | Alto | Placeholder CSS elegante com `object-fit: cover` e fundo `var(--surface-3)` para imagens que falham |
-| Zoom inline pode quebrar o layout em mobile | Média | Médio | Testar em viewport 375px; desabilitar zoom em mobile se necessário |
-| Produtos relacionados com apenas 1 produto na categoria retorna array vazio após filtrar o atual | Média | Baixo | Verificar `length > 0` antes de renderizar a seção |
-| Alterar o comportamento do clique no card pode quebrar o "Adicionar ao carrinho" existente | Baixa | Alto | Card redireciona para produto; botão de carrinho continua funcionando dentro da página de detalhe |
+| Risco                                                                                            | Probabilidade | Impacto | Mitigação                                                                                           |
+| ------------------------------------------------------------------------------------------------ | ------------- | ------- | --------------------------------------------------------------------------------------------------- |
+| Imagens de produto com URLs quebradas deixam a home feia                                         | Alta          | Alto    | Placeholder CSS elegante com `object-fit: cover` e fundo `var(--surface-3)` para imagens que falham |
+| Zoom inline pode quebrar o layout em mobile                                                      | Média         | Médio   | Testar em viewport 375px; desabilitar zoom em mobile se necessário                                  |
+| Produtos relacionados com apenas 1 produto na categoria retorna array vazio após filtrar o atual | Média         | Baixo   | Verificar `length > 0` antes de renderizar a seção                                                  |
+| Alterar o comportamento do clique no card pode quebrar o "Adicionar ao carrinho" existente       | Baixa         | Alto    | Card redireciona para produto; botão de carrinho continua funcionando dentro da página de detalhe   |
 
 ---
 
 ## 8. Plano de Testes
 
-- [ ] **Testes manuais (frontend):**
+- [x] **Testes manuais (frontend):**
   - Home carrega manifesto e produtos em destaque sem erro no console
   - Clique no card da home leva para `/pages/product.html?id=<uuid>`
   - Clique no card do catálogo leva para a mesma página
@@ -204,15 +205,15 @@ Nenhuma. Esta sprint é 100% frontend.
   - Pedidos vazios exibe mensagem e link
   - ID de produto inválido na URL exibe mensagem de erro
 
-- [ ] **Nenhum teste de backend necessário** — sprint é 100% frontend, API não muda
+- [x] **Nenhum teste de backend necessário** — sprint é 100% frontend, API não muda
 
 ---
 
 ## 9. Critérios de Done (DoD)
 
-- [ ] Todos os RFs implementados e testados manualmente
-- [ ] Zero cores hardcoded fora do `:root` nos arquivos novos/editados
-- [ ] Zero rastros de "ModaShop" em qualquer arquivo
-- [ ] Console do browser sem erros durante o fluxo completo
-- [ ] Responsividade básica: home e página de produto navegáveis em mobile (375px)
-- [ ] `git status` limpo (`.env` ausente)
+- [x] Todos os RFs implementados e testados manualmente
+- [x] Zero cores hardcoded fora do `:root` nos arquivos novos/editados
+- [x] Zero rastros de "ModaShop" em qualquer arquivo
+- [x] Console do browser sem erros durante o fluxo completo
+- [x] Responsividade básica: home e página de produto navegáveis em mobile (375px)
+- [x] `git status` limpo (`.env` ausente)

@@ -5,7 +5,23 @@ let currentPage = 0;
 const pageSize = 12;
 let filters = {};
 
+function renderSkeletons(count = 8) {
+    const grid = document.querySelector('#products-grid');
+    if (!grid) return;
+    grid.innerHTML = Array(count).fill(`
+        <div class="product-card">
+            <div class="skeleton skeleton-img"></div>
+            <div class="product-info">
+                <div class="skeleton skeleton-line" style="width:70%"></div>
+                <div class="skeleton skeleton-line" style="width:40%"></div>
+            </div>
+        </div>
+    `).join('');
+}
+
 async function loadProducts(page = 0) {
+    renderSkeletons();
+
     const params = new URLSearchParams({
         page,
         size: pageSize,
@@ -38,10 +54,15 @@ function renderProducts(products) {
 
     grid.innerHTML = products.map(p => `
         <div class="product-card">
-            <img src="${p.imageUrl || 'https://via.placeholder.com/300x300?text=Sem+imagem'}"
-                 alt="${p.name}" loading="lazy">
+            <a href="product.html?id=${p.id}">
+                <img src="${p.imageUrl || ''}"
+                     alt="${p.name}"
+                     loading="lazy"
+                     style="background:var(--surface-3)"
+                     onerror="this.onerror=null;this.removeAttribute('src')">
+            </a>
             <div class="product-info">
-                <h3>${p.name}</h3>
+                <a href="product.html?id=${p.id}"><h3>${p.name}</h3></a>
                 <p class="category">${p.category?.name ?? ''}</p>
                 <p class="price">R$ ${p.price.toFixed(2).replace('.', ',')}</p>
                 <p class="stock ${p.stock === 0 ? 'out' : ''}">

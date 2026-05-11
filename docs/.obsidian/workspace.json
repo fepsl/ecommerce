@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "61cb24d1328dda3d",
+        "id": "ec6d6abb848f693c",
         "type": "tabs",
         "children": [
           {
-            "id": "38ccb81b420400d1",
+            "id": "720c49483ae793cc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "06-sprints/sprint-02.md",
+                "file": "prd-sprint-03-frontend.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "sprint-02"
+              "title": "prd-sprint-03-frontend"
             }
           }
         ]
@@ -181,21 +181,24 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "38ccb81b420400d1",
+  "active": "720c49483ae793cc",
   "lastOpenFiles": [
-    "tasks-roadmap-execucao.md",
-    "02-backend/regras-de-negocio.md",
-    "06-sprints/sprint-02.md",
-    "tasks-roadmap-execucao.md.tmp.20428.4988ab07e627",
+    "prd-sprint-03-frontend.md",
     "index.md",
+    "tasks-roadmap-execucao.md",
+    "04-banco/banco-de-dados.md",
+    "07-decisoes/decisoes-tecnicas.md",
+    "01-planejamento/roadmap.md",
+    "tasks-sprint-03-frontend.md",
+    "01-planejamento/visao-geral.md",
+    "06-sprints/sprint-02.md",
+    "02-backend/regras-de-negocio.md",
+    "tasks-roadmap-execucao.md.tmp.20428.4988ab07e627",
     "tasks-roadmap-execucao.md.tmp.20428.52340227bbb3",
     "tasks-redesign-veln.md",
     "prd-redesign-veln.md",
     "prd-roadmap-execucao.md",
-    "01-planejamento/roadmap.md",
-    "04-banco/banco-de-dados.md",
     "index.md.tmp.2288.fb6764428711",
-    "01-planejamento/visao-geral.md",
     "06-sprints/sprint-01.md",
     "02-backend/arquitetura.md",
     "2026-05-10.md",
@@ -206,7 +209,6 @@
     "02-backend/spring-boot.md",
     "02-backend/spring-boot.md.tmp.22368.0b66459b6d1f",
     "02-backend/testes.md",
-    "07-decisoes/decisoes-tecnicas.md",
     "02-backend/autenticacao-jwt.md",
     "02-backend/api-endpoints.md",
     "08-documentacao",
@@ -216,7 +218,6 @@
     "04-banco",
     "03-frontend",
     "sprints/sprint-01.md",
-    "api-endpoints.md",
-    "arquitetura.md"
+    "api-endpoints.md"
   ]
 }

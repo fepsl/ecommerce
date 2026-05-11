@@ -24,9 +24,7 @@
     <div class="page-header"><h1>Carrinho</h1></div>
 
     <div class="cart-layout">
-        <div id="cart-items">
-            <p class="empty-state">Seu carrinho está vazio.</p>
-        </div>
+        <div id="cart-items"></div>
 
         <div class="cart-summary">
             <h3>Resumo</h3>
@@ -54,7 +52,12 @@
         const container = document.querySelector('#cart-items');
 
         if (cart.length === 0) {
-            container.innerHTML = '<p class="empty-state">Seu carrinho está vazio.</p>';
+            container.innerHTML = `
+                <div class="empty-state">
+                    <p class="empty-title">Seu carrinho está vazio</p>
+                    <p class="empty-sub">Descubra nossa coleção e encontre algo que vale a pena.</p>
+                    <a href="products.html" class="btn btn-secondary">Ver coleção</a>
+                </div>`;
             return;
         }
 

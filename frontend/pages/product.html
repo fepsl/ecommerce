@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto — VELN</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <a href="../index.html" class="navbar-brand">VELN</a>
+        <ul class="navbar-nav">
+            <li><a href="products.html">Produtos</a></li>
+            <li id="nav-auth"><a href="login.html">Entrar</a></li>
+            <li class="cart-icon">
+                <a href="cart.html">Carrinho <span id="cart-count">0</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    <div id="product-container"></div>
+</main>
+
+<section id="related-section" class="related" style="display:none">
+    <div class="container">
+        <h2>Você também pode gostar</h2>
+        <div class="products-grid" id="related-grid"></div>
+    </div>
+</section>
+
+<script type="module" src="../js/product.js"></script>
+<script type="module">
+    import { isAuthenticated, logout, getCurrentUser } from '../js/auth.js';
+    import { updateCartCount } from '../js/cart.js';
+
+    updateCartCount();
+
+    const navAuth = document.querySelector('#nav-auth');
+    if (isAuthenticated()) {
+        const user = getCurrentUser();
+        navAuth.innerHTML = `
+            <a href="orders.html">Meus pedidos</a>
+            <a href="#" id="logout-btn">Sair</a>
+        `;
+        document.querySelector('#logout-btn').addEventListener('click', e => {
+            e.preventDefault();
+            logout();
+        });
+    }
+</script>
+</body>
+</html>

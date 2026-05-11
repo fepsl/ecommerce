@@ -43,9 +43,28 @@
     </div>
 </section>
 
+<section class="manifesto">
+    <div class="container">
+        <p class="manifesto-label">Manifesto</p>
+        <h2>Não criamos tendências.<br>Criamos o que permanece.</h2>
+        <p class="manifesto-text">A VELN existe para aqueles que escolhem com intenção. Cada peça é editada com rigor, concebida para durar além da estação — não como moda, mas como presença.</p>
+    </div>
+</section>
+
+<section class="featured">
+    <div class="container">
+        <header class="section-header">
+            <h2>Coleção</h2>
+            <a href="pages/products.html">Ver tudo →</a>
+        </header>
+        <div class="products-grid" id="featured-grid"></div>
+    </div>
+</section>
+
 <script type="module">
     import { isAuthenticated, logout, getCurrentUser } from './js/auth.js';
-    import { updateCartCount } from './js/cart.js';
+    import { addToCart, updateCartCount } from './js/cart.js';
+    import api from './js/api.js';
 
     updateCartCount();
 
@@ -60,6 +79,65 @@
             e.preventDefault();
             logout();
         });
+    }
+
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    const grid = document.querySelector('#featured-grid');
+
+    grid.innerHTML = Array(4).fill(`
+        <div class="product-card">
+            <div class="skeleton skeleton-img"></div>
+            <div class="product-info">
+                <div class="skeleton skeleton-line" style="width:70%"></div>
+                <div class="skeleton skeleton-line" style="width:40%"></div>
+            </div>
+        </div>
+    `).join('');
+
+    try {
+        const data = await api.get('/products?size=4');
+        grid.innerHTML = data.content.map(p => `
+            <div class="product-card">
+                <a href="pages/product.html?id=${p.id}">
+                    <img src="${p.imageUrl || ''}"
+                         alt="${p.name}"
+                         loading="lazy"
+                         style="background:var(--surface-3)"
+                         onerror="this.onerror=null;this.removeAttribute('src')">
+                </a>
+                <div class="product-info">
+                    <a href="pages/product.html?id=${p.id}"><h3>${p.name}</h3></a>
+                    <p class="category">${p.category?.name ?? ''}</p>
+                    <p class="price">R$ ${p.price.toFixed(2).replace('.', ',')}</p>
+                    <p class="stock ${p.stock === 0 ? 'out' : ''}">
+                        ${p.stock > 0 ? `${p.stock} em estoque` : 'Sem estoque'}
+                    </p>
+                    <button class="btn btn-primary add-to-cart"
+                            data-id="${p.id}"
+                            data-name="${p.name}"
+                            data-price="${p.price}"
+                            ${p.stock === 0 ? 'disabled' : ''}>
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            </div>
+        `).join('');
+
+        grid.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', () => {
+                addToCart({ id: btn.dataset.id, name: btn.dataset.name, price: parseFloat(btn.dataset.price) });
+                showToast(`"${btn.dataset.name}" adicionado ao carrinho`);
+            });
+        });
+    } catch {
+        grid.innerHTML = '<p class="empty-state" style="grid-column:1/-1;background:var(--surface-2)">Não foi possível carregar os produtos.</p>';
     }
 </script>
 </body>
