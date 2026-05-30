@@ -2,8 +2,8 @@
 
 > Gerado a partir de: [[prd-fase-2-qualidade]]  
 > Data: 2026-05-10  
-> Atualizado: 2026-05-11  
-> Status: Concluído (testes de integração bloqueados por configuração do Docker no Windows — ver TASK-03)
+> Atualizado: 2026-05-13  
+> Status: ✅ Concluído — 78 testes passando (52 unitários + 26 integração). Testes de integração migrados de TestContainers para H2 in-memory.
 
 ---
 
@@ -91,18 +91,18 @@ TASK-09 (Paginação frontend) → independente
 
 ---
 
-## TASK-03 — BaseIntegrationTest com TestContainers
+## TASK-03 — BaseIntegrationTest com H2 in-memory
 
 **Tipo**: `test`  
 **Estimativa**: 1h  
 **Bloqueia**: TASK-04, TASK-05, TASK-06, TASK-07  
 **Bloqueada por**: —  
-**Status**: ✅ CONCLUÍDO (código pronto) — ⚠️ testes bloqueados no Windows
+**Status**: ✅ CONCLUÍDO (migrado de TestContainers para H2 in-memory)
 
-> **Nota:** O código foi implementado corretamente. Os testes de integração falham apenas
-> no ambiente Windows por incompatibilidade entre o Testcontainers e o Docker Desktop
-> (named pipe). Em Linux/Mac ou CI/CD (GitHub Actions) rodam normalmente.
-> Workaround pendente: habilitar "Expose daemon on tcp://localhost:2375" no Docker Desktop.
+> **Nota:** A implementação original usava TestContainers com PostgreSQL real. Devido a incompatibilidade
+> com Docker Desktop no Windows, os testes de integração foram migrados para H2 in-memory
+> (commit `e35ca7c`). A estrutura `BaseIntegrationTest` foi mantida com `@SpringBootTest` + MockMvc,
+> apenas trocando o datasource. Todos os 26 testes de integração passam normalmente.
 
 **O que fazer:**
 - [x] Adicionar ao `pom.xml` o BOM e as dependências:
@@ -151,7 +151,7 @@ TASK-09 (Paginação frontend) → independente
 **Estimativa**: 1–2h  
 **Bloqueia**: —  
 **Bloqueada por**: TASK-03  
-**Status**: ✅ CONCLUÍDO (código pronto) — ⚠️ bloqueado por Docker no Windows (ver TASK-03)
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
 - [x] Criar `src/test/java/com/ecommerce/integration/ProductControllerIT.java` estendendo `BaseIntegrationTest`
@@ -180,7 +180,7 @@ TASK-09 (Paginação frontend) → independente
 **Estimativa**: 1h  
 **Bloqueia**: —  
 **Bloqueada por**: TASK-03  
-**Status**: ✅ CONCLUÍDO (código pronto) — ⚠️ bloqueado por Docker no Windows (ver TASK-03)
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
 - [x] Criar `src/test/java/com/ecommerce/integration/CategoryControllerIT.java`
@@ -207,7 +207,7 @@ TASK-09 (Paginação frontend) → independente
 **Estimativa**: 1–2h  
 **Bloqueia**: —  
 **Bloqueada por**: TASK-03  
-**Status**: ✅ CONCLUÍDO (código pronto) — ⚠️ bloqueado por Docker no Windows (ver TASK-03)
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
 - [x] Criar `src/test/java/com/ecommerce/integration/OrderControllerIT.java`
@@ -235,7 +235,7 @@ TASK-09 (Paginação frontend) → independente
 **Estimativa**: 45min  
 **Bloqueia**: —  
 **Bloqueada por**: TASK-03  
-**Status**: ✅ CONCLUÍDO (código pronto) — ⚠️ bloqueado por Docker no Windows (ver TASK-03)
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
 - [x] Criar `src/test/java/com/ecommerce/integration/UserControllerIT.java`
@@ -323,11 +323,11 @@ TASK-09 (Paginação frontend) → independente
 |------|-----------|--------|
 | TASK-01 | Actuator + health check | ✅ Concluído |
 | TASK-02 | Logs estruturados JSON | ✅ Concluído |
-| TASK-03 | BaseIntegrationTest + TestContainers | ✅ Código pronto / ⚠️ Docker Windows |
-| TASK-04 | ProductControllerIT | ✅ Código pronto / ⚠️ Docker Windows |
-| TASK-05 | CategoryControllerIT | ✅ Código pronto / ⚠️ Docker Windows |
-| TASK-06 | OrderControllerIT | ✅ Código pronto / ⚠️ Docker Windows |
-| TASK-07 | UserControllerIT | ✅ Código pronto / ⚠️ Docker Windows |
+| TASK-03 | BaseIntegrationTest + H2 in-memory | ✅ Concluído |
+| TASK-04 | ProductControllerIT | ✅ Concluído |
+| TASK-05 | CategoryControllerIT | ✅ Concluído |
+| TASK-06 | OrderControllerIT | ✅ Concluído |
+| TASK-07 | UserControllerIT | ✅ Concluído |
 | TASK-08 | Rate limiting | ✅ Concluído |
 | TASK-09 | Paginação frontend | ✅ Concluído |
 

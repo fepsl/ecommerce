@@ -7,12 +7,12 @@
 
 ## Estado do projeto
 
-| Campo      | Valor                                              |
-| ---------- | -------------------------------------------------- |
-| Status     | 🟡 Em desenvolvimento                              |
-| Fase atual | Sprint 03 concluída — iniciando Fase 2 do roadmap  |
-| Stack      | Java 17 + Spring Boot 3 + PostgreSQL + HTML/CSS/JS |
-| Objetivo   | Portfólio para estágio em Engenharia de Software   |
+| Campo      | Valor                                                                  |
+| ---------- | ---------------------------------------------------------------------- |
+| Status     | 🟢 Pronto para divulgação — falta deploy                               |
+| Fase atual | Fases 1–4 concluídas — QA visual feito em 29/05/2026                   |
+| Stack      | Java 17 + Spring Boot 3 + PostgreSQL + HTML/CSS/JS                     |
+| Objetivo   | Portfólio para estágio em Engenharia de Software                       |
 
 ---
 
@@ -62,12 +62,17 @@
 |------|------------|
 | [[prd-roadmap-execucao]] | Roadmap do scaffold ao portfólio — Fases 1 e 2 concluídas |
 | [[tasks-roadmap-execucao]] | Tasks de execução das 4 fases (TASK-01 a TASK-17) |
-| [[prd-redesign-veln]] | Redesign visual dark VELN — Rascunho |
-| [[tasks-redesign-veln]] | Tasks do redesign VELN (TASK-11 a TASK-16) |
+| [[prd-redesign-veln]] | Redesign visual dark VELN — ✅ Concluído |
+| [[tasks-redesign-veln]] | Tasks do redesign VELN (TASK-01 a TASK-07) — ✅ Todas concluídas |
 | [[prd-sprint-03-frontend]] | Frontend editorial + página de produto — ✅ Concluído |
 | [[tasks-sprint-03-frontend]] | Tasks da Sprint 03 (TASK-01 a TASK-08) — ✅ Todas concluídas |
 | [[prd-fase-2-qualidade]] | Qualidade e robustez — Actuator, Logs, TestContainers, Rate limit, Paginação |
-| [[tasks-fase-2-qualidade]] | Tasks da Fase 2 (TASK-01 a TASK-09) — Planejadas |
+| [[tasks-fase-2-qualidade]] | Tasks da Fase 2 (TASK-01 a TASK-09) — ✅ Todas concluídas (78 testes) |
+
+### Próximos Passos
+| Nota | O que cobre |
+|------|------------|
+| [[proximos-passos]] | O que falta para o portfólio estar completo — tabela priorizada |
 
 ### 07 · Decisões Técnicas
 | Nota | O que cobre |

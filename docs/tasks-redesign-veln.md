@@ -1,7 +1,8 @@
 # Tasks: Redesign Visual — Identidade VELN
 
 > Gerado a partir de: [[prd-redesign-veln.md]]  
-> Data: 2026-05-10
+> Data: 2026-05-10  
+> Status: ✅ Concluído — todas as 7 tasks entregues
 
 ---
 
@@ -24,15 +25,16 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 **Tipo**: `refactor`  
 **Estimativa**: 1–2h  
 **Bloqueia**: TASK-02, TASK-03, TASK-04, TASK-05, TASK-06  
-**Bloqueada por**: —
+**Bloqueada por**: —  
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
-- [ ] Substituir todas as variáveis CSS em `:root` pela paleta VELN dark
-- [ ] Adicionar `@import` do Google Fonts (Cormorant Garamond + Inter) com `display=swap`
-- [ ] Definir `font-family` base: Inter no `body`, Cormorant Garamond nos headings via classe ou seletor
-- [ ] Reescrever estilos base: `body`, `a`, `::selection`
-- [ ] Adicionar override de autofill: `input:-webkit-autofill` com `box-shadow: inset 0 0 0 1000px #0a0a0a`
-- [ ] Remover variáveis antigas (`--primary`, `--accent` vermelho, `--bg` claro)
+- [x] Substituir todas as variáveis CSS em `:root` pela paleta VELN dark
+- [x] Adicionar `@import` do Google Fonts (Cormorant Garamond + Inter) com `display=swap`
+- [x] Definir `font-family` base: Inter no `body`, Cormorant Garamond nos headings via classe ou seletor
+- [x] Reescrever estilos base: `body`, `a`, `::selection`
+- [x] Adicionar override de autofill: `input:-webkit-autofill` com `box-shadow: inset 0 0 0 1000px #0a0a0a`
+- [x] Remover variáveis antigas (`--primary`, `--accent` vermelho, `--bg` claro)
 
 **Paleta a aplicar:**
 ```css
@@ -53,9 +55,9 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 - `frontend/css/styles.css` (reescrita do topo: reset, variáveis, tipografia base)
 
 **Critério de done:**
-- [ ] Abrindo qualquer página, o fundo é preto e o texto é branco/off-white
-- [ ] Google Fonts carregando (verificar na aba Network do DevTools)
-- [ ] Nenhum valor de cor hardcoded fora do `:root`
+- [x] Abrindo qualquer página, o fundo é preto e o texto é branco/off-white
+- [x] Google Fonts carregando (verificar na aba Network do DevTools)
+- [x] Nenhum valor de cor hardcoded fora do `:root`
 
 ---
 
@@ -64,16 +66,17 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 **Tipo**: `feat`  
 **Estimativa**: 1h  
 **Bloqueia**: TASK-03, TASK-04, TASK-05, TASK-06  
-**Bloqueada por**: TASK-01
+**Bloqueada por**: TASK-01  
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
-- [ ] Reescrever estilos da `.navbar`: fundo `#000`, sem sombra, border-bottom `1px solid var(--border)`
-- [ ] Logo "VELN" em Cormorant Garamond, sem `<span>` colorido, letter-spacing amplo
-- [ ] Links da navbar: cor `var(--text-muted)`, hover `var(--text)` com underline que cresce via `::after` (transform scaleX)
-- [ ] Contador do carrinho: remover badge vermelho — usar parênteses ou texto simples `(3)`
-- [ ] Atualizar `index.html`: substituir `Moda<span>Shop</span>` por `VELN` em todas as referências
-- [ ] Substituir emojis do carrinho (🛒) por texto `Bolsa` ou SVG inline simples
-- [ ] Reescrever `.container` e `.page-header` para o novo sistema
+- [x] Reescrever estilos da `.navbar`: fundo `#000`, sem sombra, border-bottom `1px solid var(--border)`
+- [x] Logo "VELN" em Cormorant Garamond, sem `<span>` colorido, letter-spacing amplo
+- [x] Links da navbar: cor `var(--text-muted)`, hover `var(--text)` com underline que cresce via `::after` (transform scaleX)
+- [x] Contador do carrinho: remover badge vermelho — usar parênteses ou texto simples `(3)`
+- [x] Atualizar `index.html`: substituir `Moda<span>Shop</span>` por `VELN` em todas as referências
+- [x] Substituir emojis do carrinho (🛒) por texto `Bolsa` ou SVG inline simples
+- [x] Reescrever `.container` e `.page-header` para o novo sistema
 
 **Arquivos afetados:**
 - `frontend/css/styles.css` (seção navbar, layout)
@@ -85,9 +88,9 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 - `frontend/pages/orders.html` (navbar markup)
 
 **Critério de done:**
-- [ ] Navbar visualmente coerente com tema dark em todas as 6 páginas
-- [ ] Nome "VELN" aparece em todas as telas, sem rastro de "ModaShop"
-- [ ] Nenhum emoji funcional visível
+- [x] Navbar visualmente coerente com tema dark em todas as 6 páginas
+- [x] Nome "VELN" aparece em todas as telas, sem rastro de "ModaShop"
+- [x] Nenhum emoji funcional visível
 
 ---
 
@@ -96,24 +99,25 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 **Tipo**: `feat`  
 **Estimativa**: 1–2h  
 **Bloqueia**: TASK-07  
-**Bloqueada por**: TASK-01, TASK-02
+**Bloqueada por**: TASK-01, TASK-02  
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
-- [ ] Reescrever seção `.hero` em `index.html`: remover gradiente, fundo `#000`, adicionar linha fina decorativa antes do headline
-- [ ] Headline em Cormorant Garamond, tamanho `clamp(2.5rem, 6vw, 5rem)`, peso 300
-- [ ] Subtítulo em Inter 300, `var(--text-muted)`, máx 480px de largura, centralizado
-- [ ] Reescrever botões hero: um único CTA com borda `1px solid var(--accent)`, fundo transparente, hover inverte (fundo branco, texto preto)
-- [ ] Remover seção `.features` com emojis — substituir por uma linha de 4 textos simples em uppercase/tracking (ex: `FRETE GRÁTIS · TROCA EM 30 DIAS · COMPRA SEGURA · PARCELAMENTO`)
-- [ ] Extrair estilos inline do `<style>` do `index.html` para `styles.css`
+- [x] Reescrever seção `.hero` em `index.html`: remover gradiente, fundo `#000`, adicionar linha fina decorativa antes do headline
+- [x] Headline em Cormorant Garamond, tamanho `clamp(2.5rem, 6vw, 5rem)`, peso 300
+- [x] Subtítulo em Inter 300, `var(--text-muted)`, máx 480px de largura, centralizado
+- [x] Reescrever botões hero: um único CTA com borda `1px solid var(--accent)`, fundo transparente, hover inverte (fundo branco, texto preto)
+- [x] Remover seção `.features` com emojis — substituir por uma linha de 4 textos simples em uppercase/tracking (ex: `FRETE GRÁTIS · TROCA EM 30 DIAS · COMPRA SEGURA · PARCELAMENTO`)
+- [x] Extrair estilos inline do `<style>` do `index.html` para `styles.css`
 
 **Arquivos afetados:**
 - `frontend/index.html` (hero markup, remoção de `<style>` inline, feature section)
 - `frontend/css/styles.css` (estilos `.hero`, `.hero-tagline`, `.btn-outline`)
 
 **Critério de done:**
-- [ ] Home abre com fundo preto puro, headline serifada grande
-- [ ] Nenhum `<style>` inline no `index.html`
-- [ ] CTA com hover de inversão funcionando
+- [x] Home abre com fundo preto puro, headline serifada grande
+- [x] Nenhum `<style>` inline no `index.html`
+- [x] CTA com hover de inversão funcionando
 
 ---
 
@@ -122,26 +126,27 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 **Tipo**: `feat`  
 **Estimativa**: 1–2h  
 **Bloqueia**: TASK-07  
-**Bloqueada por**: TASK-01, TASK-02
+**Bloqueada por**: TASK-01, TASK-02  
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
-- [ ] Reescrever `.product-card`: fundo `var(--surface-2)`, border-radius `var(--radius)` (4px), sem box-shadow
-- [ ] Imagem: mudar `aspect-ratio` de `1` para `3/4` (proporção editorial de moda)
-- [ ] `.product-info h3`: fonte Cormorant Garamond, peso 400
-- [ ] `.product-info .category`: uppercase, `letter-spacing: .1em`, tamanho `.7rem`, cor `var(--text-muted)`
-- [ ] `.product-info .price`: Inter 500, cor `var(--text)` (remover accent vermelho)
-- [ ] Hover do card: revelar botão com `opacity: 0 → 1` + `translateY(4px → 0)`, sem elevação do card inteiro
-- [ ] Reescrever `.filters`: fundo `var(--surface-1)`, inputs com estilo dark (consistente com TASK-05)
-- [ ] Reescrever paginação: botões sem borda visível, apenas texto, underline no hover
+- [x] Reescrever `.product-card`: fundo `var(--surface-2)`, border-radius `var(--radius)` (4px), sem box-shadow
+- [x] Imagem: mudar `aspect-ratio` de `1` para `3/4` (proporção editorial de moda)
+- [x] `.product-info h3`: fonte Cormorant Garamond, peso 400
+- [x] `.product-info .category`: uppercase, `letter-spacing: .1em`, tamanho `.7rem`, cor `var(--text-muted)`
+- [x] `.product-info .price`: Inter 500, cor `var(--text)` (remover accent vermelho)
+- [x] Hover do card: revelar botão com `opacity: 0 → 1` + `translateY(4px → 0)`, sem elevação do card inteiro
+- [x] Reescrever `.filters`: fundo `var(--surface-1)`, inputs com estilo dark (consistente com TASK-05)
+- [x] Reescrever paginação: botões sem borda visível, apenas texto, underline no hover
 
 **Arquivos afetados:**
 - `frontend/css/styles.css` (seções produto, filtros, paginação)
 - `frontend/pages/products.html` (verificar se há estilos inline a remover)
 
 **Critério de done:**
-- [ ] Cards com proporção 3/4 e fundo escuro visíveis na listagem
-- [ ] Hover do card revela botão sem animação agressiva
-- [ ] Filtros com tema dark coerente
+- [x] Cards com proporção 3/4 e fundo escuro visíveis na listagem
+- [x] Hover do card revela botão sem animação agressiva
+- [x] Filtros com tema dark coerente
 
 ---
 
@@ -150,17 +155,18 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 **Tipo**: `feat`  
 **Estimativa**: 1h  
 **Bloqueia**: TASK-07  
-**Bloqueada por**: TASK-01, TASK-02
+**Bloqueada por**: TASK-01, TASK-02  
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
-- [ ] Reescrever `.form-card`: fundo `var(--surface-1)`, sem box-shadow, border `1px solid var(--border)`
-- [ ] `.form-card h1`: Cormorant Garamond, peso 300, letter-spacing amplo
-- [ ] `.form-group label`: uppercase, `.75rem`, `letter-spacing: .08em`, `var(--text-muted)`
-- [ ] `input`, `select`: fundo `#0a0a0a`, borda `1px solid var(--border)`, texto `var(--text)`, border-radius `var(--radius)`
-- [ ] `input:focus`: `border-color: var(--accent)`, sem outline colorido
-- [ ] Confirmar que o override de autofill do TASK-01 resolve o fundo amarelo do Chrome
-- [ ] `.btn-primary` global: reescrever para fundo `var(--accent)` (branco), texto `#000`, hover `var(--accent-hover)`
-- [ ] `.btn-secondary`: borda `var(--border)`, texto `var(--text-muted)`, hover borda/texto `var(--accent)`
+- [x] Reescrever `.form-card`: fundo `var(--surface-1)`, sem box-shadow, border `1px solid var(--border)`
+- [x] `.form-card h1`: Cormorant Garamond, peso 300, letter-spacing amplo
+- [x] `.form-group label`: uppercase, `.75rem`, `letter-spacing: .08em`, `var(--text-muted)`
+- [x] `input`, `select`: fundo `#0a0a0a`, borda `1px solid var(--border)`, texto `var(--text)`, border-radius `var(--radius)`
+- [x] `input:focus`: `border-color: var(--accent)`, sem outline colorido
+- [x] Confirmar que o override de autofill do TASK-01 resolve o fundo amarelo do Chrome
+- [x] `.btn-primary` global: reescrever para fundo `var(--accent)` (branco), texto `#000`, hover `var(--accent-hover)`
+- [x] `.btn-secondary`: borda `var(--border)`, texto `var(--text-muted)`, hover borda/texto `var(--accent)`
 
 **Arquivos afetados:**
 - `frontend/css/styles.css` (seções formulário, botões)
@@ -168,9 +174,9 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 - `frontend/pages/register.html` (verificar estilos inline)
 
 **Critério de done:**
-- [ ] Formulário de login com fundo escuro e inputs dark
-- [ ] Autofill do Chrome não exibe fundo amarelo
-- [ ] Botão primário: branco com texto preto
+- [x] Formulário de login com fundo escuro e inputs dark
+- [x] Autofill do Chrome não exibe fundo amarelo
+- [x] Botão primário: branco com texto preto
 
 ---
 
@@ -179,20 +185,21 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 **Tipo**: `feat`  
 **Estimativa**: 1h  
 **Bloqueia**: TASK-07  
-**Bloqueada por**: TASK-01, TASK-02
+**Bloqueada por**: TASK-01, TASK-02  
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
-- [ ] `.cart-item`: remover fundo de card — usar apenas border-bottom `1px solid var(--border)` como separador
-- [ ] `.cart-item-price`: cor `var(--text)` (remover accent vermelho)
-- [ ] `.cart-summary`: fundo `var(--surface-2)`, border `1px solid var(--border)`, sem shadow
-- [ ] Botão "Finalizar Compra": fundo `var(--accent)` (branco), texto `#000` — inversão proposital para destaque máximo
-- [ ] Reescrever badges de status para tema dark:
+- [x] `.cart-item`: remover fundo de card — usar apenas border-bottom `1px solid var(--border)` como separador
+- [x] `.cart-item-price`: cor `var(--text)` (remover accent vermelho)
+- [x] `.cart-summary`: fundo `var(--surface-2)`, border `1px solid var(--border)`, sem shadow
+- [x] Botão "Finalizar Compra": fundo `var(--accent)` (branco), texto `#000` — inversão proposital para destaque máximo
+- [x] Reescrever badges de status para tema dark:
   - `badge-pending`: fundo `#1a1500`, texto `#c9a227`
   - `badge-paid`: fundo `#001a0d`, texto `#2eb87a`
   - `badge-shipped`: fundo `#00101a`, texto `#3a9fd6`
   - `badge-delivered`: fundo `#001a08`, texto `#27c96e`
   - `badge-cancelled`: fundo `#1a0000`, texto `#e05252`
-- [ ] `.order-card`: fundo `var(--surface-1)`, border `1px solid var(--border)`, sem shadow
+- [x] `.order-card`: fundo `var(--surface-1)`, border `1px solid var(--border)`, sem shadow
 
 **Arquivos afetados:**
 - `frontend/css/styles.css` (seções carrinho, pedidos, badges)
@@ -200,9 +207,9 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 - `frontend/pages/orders.html` (verificar estilos inline)
 
 **Critério de done:**
-- [ ] Página do carrinho com separadores sutis e botão de checkout branco
-- [ ] Badges de status legíveis no tema dark
-- [ ] Nenhum fundo pastel nos badges
+- [x] Página do carrinho com separadores sutis e botão de checkout branco
+- [x] Badges de status legíveis no tema dark
+- [x] Nenhum fundo pastel nos badges
 
 ---
 
@@ -211,23 +218,24 @@ TASK-01 (CSS base) bloqueia tudo. TASK-02 (navbar + layout) bloqueia as páginas
 **Tipo**: `test`  
 **Estimativa**: 1h  
 **Bloqueia**: —  
-**Bloqueada por**: TASK-03, TASK-04, TASK-05, TASK-06
+**Bloqueada por**: TASK-03, TASK-04, TASK-05, TASK-06  
+**Status**: ✅ CONCLUÍDO
 
 **O que fazer:**
-- [ ] Abrir cada uma das 6 páginas no Chrome e Firefox e verificar coerência visual
-- [ ] Usar DevTools > Accessibility > Color Contrast para validar ratio ≥ 4.5:1 nos textos principais
-- [ ] Verificar hover states: navbar links, cards de produto, botões, paginação
-- [ ] Testar autofill no login e cadastro (Chrome e Firefox)
-- [ ] Buscar por valores hardcoded de cor fora do `:root` (`grep -r "#[0-9a-fA-F]" frontend/css/styles.css`)
-- [ ] Buscar por rastros de "ModaShop" em todos os arquivos HTML
-- [ ] Verificar se Google Fonts aparece na aba Network (status 200, não bloqueado)
-- [ ] Verificar `empty-state` e estados de loading no tema escuro
+- [x] Abrir cada uma das 6 páginas no Chrome e Firefox e verificar coerência visual
+- [x] Usar DevTools > Accessibility > Color Contrast para validar ratio ≥ 4.5:1 nos textos principais
+- [x] Verificar hover states: navbar links, cards de produto, botões, paginação
+- [x] Testar autofill no login e cadastro (Chrome e Firefox)
+- [x] Buscar por valores hardcoded de cor fora do `:root` (`grep -r "#[0-9a-fA-F]" frontend/css/styles.css`)
+- [x] Buscar por rastros de "ModaShop" em todos os arquivos HTML
+- [x] Verificar se Google Fonts aparece na aba Network (status 200, não bloqueado)
+- [x] Verificar `empty-state` e estados de loading no tema escuro
 
 **Arquivos afetados:**
 - Qualquer arquivo que apresentar problema durante a inspeção
 
 **Critério de done:**
-- [ ] Todos os DoD do PRD marcados como concluídos
-- [ ] Nenhuma cor hardcoded fora do `:root`
-- [ ] Contraste WCAG AA confirmado nos textos principais
-- [ ] Zero ocorrências de "ModaShop" nos HTMLs
+- [x] Todos os DoD do PRD marcados como concluídos
+- [x] Nenhuma cor hardcoded fora do `:root`
+- [x] Contraste WCAG AA confirmado nos textos principais
+- [x] Zero ocorrências de "ModaShop" nos HTMLs

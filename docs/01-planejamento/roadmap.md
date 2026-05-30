@@ -59,13 +59,13 @@
 
 ## Dívidas técnicas conhecidas
 
-| Item | Impacto | Esforço | Status |
-|------|---------|---------|--------|
-| ~~Validação de transição de status de pedido~~ | Médio | Baixo | ✅ Resolvido na Sprint 02 |
-| ~~Falta de testes nos controllers~~ | Alto | Médio | ✅ Resolvido na Fase 2 (integração com H2) |
-| ~~`image_url` é string livre — sem validação de URL~~ | Baixo | Baixo | ✅ Resolvido na Sprint 02 |
-| ~~Frontend sem tratamento de erro consistente~~ | Médio | Médio | ✅ Resolvido na Sprint 03 |
-| Docker Desktop não instalado — testes end-to-end pendentes | Médio | Baixo | Pendente |
+| Item                                                       | Impacto | Esforço | Status                                    |
+| ---------------------------------------------------------- | ------- | ------- | ----------------------------------------- |
+| ~~Validação de transição de status de pedido~~             | Médio   | Baixo   | ✅ Resolvido na Sprint 02                  |
+| ~~Falta de testes nos controllers~~                        | Alto    | Médio   | ✅ Resolvido na Fase 2 (integração com H2) |
+| ~~`image_url` é string livre — sem validação de URL~~      | Baixo   | Baixo   | ✅ Resolvido na Sprint 02                  |
+| ~~Frontend sem tratamento de erro consistente~~            | Médio   | Médio   | ✅ Resolvido na Sprint 03                  |
+| Docker Desktop não instalado — testes end-to-end pendentes | Médio   | Baixo   | Pendente                                  |
 
 ## Relacionado
 
