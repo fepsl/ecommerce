@@ -11,7 +11,7 @@
     --surface-3:    #1c1c1c;
     --surface-input: #0a0a0a;
     --border:       #2a2a2a;
-    --border-faint: #333333;
+    --border-faint: #606060;
     --border-muted: #444444;
     --border-medium: #555555;
     --border-light: #666666;
@@ -19,7 +19,7 @@
     --text-muted:   #888888;
     --text-light:   #aaaaaa;
     --text-lighter: #bbbbbb;
-    --text-faint:   #555555;
+    --text-faint:   #808080;
     --accent:       #ffffff;
     --accent-hover: #e0e0e0;
     --radius:       4px;
@@ -39,7 +39,7 @@ h1, h2, h3, h4 {
     font-weight: 300;
 }
 
-a { color: var(--text); text-decoration: none; }
+a, a:link, a:visited { color: var(--text); text-decoration: none; }
 a:hover { color: var(--accent); }
 
 ::selection { background: var(--accent); color: var(--bg); }
@@ -113,6 +113,8 @@ input:-webkit-autofill:focus {
 
 .navbar-nav a:hover { color: var(--accent); }
 .navbar-nav a:hover::after { transform: scaleX(1); }
+
+.cart-icon a { white-space: nowrap; }
 
 .cart-icon #cart-count {
     color: var(--text-muted);

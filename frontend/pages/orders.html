@@ -61,9 +61,7 @@
                     <p class="empty-sub">Sua primeira compra está a um clique de distância.</p>
                     <a href="products.html" class="btn btn-secondary">Explorar produtos</a>
                 </div>`;
-            return;
-        }
-
+        } else {
         container.innerHTML = orders.map(o => `
             <div class="order-card">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem">
@@ -90,6 +88,7 @@
                 </div>
             </div>
         `).join('');
+        }
     } catch (err) {
         document.querySelector('#orders-list').innerHTML =
             `<p class="empty-state">${err.message}</p>`;
