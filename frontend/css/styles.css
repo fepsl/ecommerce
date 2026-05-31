@@ -187,19 +187,19 @@ input:-webkit-autofill:focus {
     display: inline-block;
 }
 
-.btn-hero-primary {
+a.btn-hero-primary {
     background: var(--accent);
     color: var(--bg);
     border: 1px solid var(--accent);
 }
-.btn-hero-primary:hover { background: var(--bg); color: var(--accent); }
+a.btn-hero-primary:hover { background: var(--bg); color: var(--accent); }
 
-.btn-hero-outline {
+a.btn-hero-outline {
     background: transparent;
     color: var(--text);
     border: 1px solid var(--border);
 }
-.btn-hero-outline:hover { border-color: var(--accent); color: var(--accent); }
+a.btn-hero-outline:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ── Features ─────────────────────────────────────────────────── */
 .features {
