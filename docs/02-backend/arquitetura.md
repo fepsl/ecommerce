@@ -77,10 +77,69 @@ Quando precisa carregar relacionamentos, usa `@EntityGraph` no repositório — 
 | `ProductRepository.java` | Exemplo de query JPQL com filtros opcionais |
 | `OrderService.java` | Lógica mais complexa: valida estoque, calcula total, registra preço histórico |
 
+---
+
+## Autenticação JWT
+
+### Fluxo completo
+
+```
+POST /auth/register ou /auth/login
+    ↓
+Spring Security autentica via DaoAuthenticationProvider (BCrypt)
+    ↓
+JwtUtil.generateToken() — assina com HS256 + chave secreta
+    ↓
+Retorna { "token": "eyJ..." } → cliente armazena em localStorage
+    ↓
+Próximas requisições: Header "Authorization: Bearer eyJ..."
+    ↓
+JwtAuthFilter.doFilterInternal():
+  - Extrai token → JwtUtil.extractUsername() → email
+  - UserDetailsServiceImpl.loadUserByUsername() → User do banco
+  - JwtUtil.isTokenValid() → verifica assinatura + expiração
+  - Popula SecurityContextHolder
+    ↓
+Spring Security verifica @PreAuthorize / .authorizeHttpRequests()
+```
+
+### Configurações
+
+| Parâmetro | Valor |
+|-----------|-------|
+| Algoritmo | HS256 |
+| Expiração | 24 horas (86.400.000 ms) |
+| Header | `Authorization: Bearer <token>` |
+| Chave | `JWT_SECRET` (mín. 32 chars) |
+
+### Roles
+
+| Role | Permissões |
+|------|-----------|
+| `USER` | Navegar produtos, criar pedidos, ver seus pedidos, gerenciar endereço |
+| `ADMIN` | Tudo do USER + gerenciar produtos, categorias, atualizar status de pedidos |
+
+### Rotas públicas
+
+```
+POST /auth/register
+POST /auth/login
+GET  /products/**
+GET  /categories/**
+/swagger-ui/**
+/v3/api-docs/**
+```
+
+### Trade-offs do JWT stateless
+
+**Vantagem**: sem sessão no servidor → escala horizontalmente sem sticky sessions.  
+**Desvantagem**: não dá para invalidar token antes de expirar. Para revogação imediata precisaria de blocklist (Redis) — feature futura.
+
+---
+
 ## Relacionado
 
 - [[banco-de-dados]] — entidades e relacionamentos
-- [[autenticacao-jwt]] — detalhe do fluxo de segurança
 - [[spring-boot]] — configuração, profiles, Swagger
 - [[testes]] — como cada camada é testada
 - [[decisoes-tecnicas]] — justificativas para cada escolha
