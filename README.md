@@ -3,6 +3,8 @@
 Projeto de portfólio desenvolvido para demonstrar domínio real de backend com Java + Spring Boot,
 banco de dados relacional, autenticação JWT e frontend vanilla.
 
+**[Demo ao vivo](https://incredible-embrace-production-264a.up.railway.app)** · **[Swagger UI](https://ecommerce-production-4adf.up.railway.app/swagger-ui.html)** · **[Repositório](https://github.com/fepsl/ecommerce)**
+
 ---
 
 ## Tecnologias
@@ -14,8 +16,8 @@ banco de dados relacional, autenticação JWT e frontend vanilla.
 | Auth | JWT (jjwt 0.11.5), BCrypt |
 | Docs | SpringDoc OpenAPI 3 / Swagger UI |
 | Frontend | HTML5, CSS3, JavaScript puro (Fetch API) |
-| Infra | Docker, Docker Compose |
-| Testes | JUnit 5, Mockito, H2 in-memory |
+| Infra | Docker, Docker Compose, Railway |
+| Testes | JUnit 5, Mockito, H2 in-memory (78 testes) |
 
 ---
 
@@ -27,7 +29,7 @@ banco de dados relacional, autenticação JWT e frontend vanilla.
 ### 1. Clonar e configurar variáveis de ambiente
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/fepsl/ecommerce.git
 cd ecommerce
 cp .env.example .env
 # Edite o .env e troque o JWT_SECRET por uma string aleatória de 32+ caracteres
@@ -166,5 +168,4 @@ Os testes usam banco H2 in-memory — nenhuma dependência externa necessária.
 - [ ] Upload de imagens (atualmente apenas URL)
 - [ ] Cache com Redis
 - [ ] Pagamento real (gateway)
-- [ ] Rate limiting
-- [ ] CI/CD pipeline
+- [ ] CI/CD pipeline com GitHub Actions
